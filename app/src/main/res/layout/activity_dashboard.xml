@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:background="#F5F5F5">
+
+    <TextView
+        android:id="@+id/txtWelcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome to QuickKeys"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="10dp"/>
+
+    <TextView
+        android:id="@+id/txtRoleDisplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Account: User"
+        android:textSize="16sp"
+        android:layout_marginBottom="20dp"/>
+
+    <RadioGroup
+        android:id="@+id/toggleMode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="20dp"
+        android:background="#E0E0E0"
+        android:padding="5dp"
+        android:visibility="gone">
+
+        <RadioButton
+            android:id="@+id/radioBuyer"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Buyer Mode"
+            android:textStyle="bold"
+            android:checked="true"/>
+
+        <RadioButton
+            android:id="@+id/radioSeller"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="Seller Mode"/>
+    </RadioGroup>
+
+    <LinearLayout
+        android:id="@+id/layoutBuyer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+        <Button
+            android:id="@+id/btnBrowseCars"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Browse Car Listings" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutSeller"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+        <Button
+            android:id="@+id/btnPostCar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Post New Car for Sale" />
+        <Button
+            android:id="@+id/btnManageListings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Manage My Listings" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutAdmin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+        <Button
+            android:id="@+id/btnAdminUsers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Manage All Users" />
+        <Button
+            android:id="@+id/btnAdminListings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Delete Any Listing" />
+    </LinearLayout>
+
+</LinearLayout>

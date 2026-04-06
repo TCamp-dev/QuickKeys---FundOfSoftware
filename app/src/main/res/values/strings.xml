@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">QuickKeys</string>
+
+    <string-array name="role_options">
+        <item>Buyer</item>
+        <item>Seller</item>
+        <item>Admin</item>
+    </string-array>
+</resources>

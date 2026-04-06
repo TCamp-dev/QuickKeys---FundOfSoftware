@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:gravity="center_horizontal"
+    android:background="#F5F5F5">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Post a New Car"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="24dp"
+        android:textColor="#333333"/>
+
+    <EditText
+        android:id="@+id/editMake"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Make (e.g. Toyota)"
+        android:inputType="textCapWords"
+        android:padding="12dp"
+        android:background="@android:drawable/editbox_background"
+        android:layout_marginBottom="12dp"/>
+
+    <EditText
+        android:id="@+id/editModel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Model (e.g. Camry)"
+        android:inputType="textCapWords"
+        android:padding="12dp"
+        android:background="@android:drawable/editbox_background"
+        android:layout_marginBottom="12dp"/>
+
+    <EditText
+        android:id="@+id/editYear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Year (e.g. 2024)"
+        android:inputType="number"
+        android:padding="12dp"
+        android:background="@android:drawable/editbox_background"
+        android:layout_marginBottom="12dp"/>
+
+    <EditText
+        android:id="@+id/editPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Price ($)"
+        android:inputType="numberDecimal"
+        android:padding="12dp"
+        android:background="@android:drawable/editbox_background"
+        android:layout_marginBottom="12dp"/>
+
+    <Button
+        android:id="@+id/btnPickImages"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Select Car Photos"
+        android:backgroundTint="#FF9800"
+        android:layout_marginBottom="8dp"/>
+
+    <TextView
+        android:id="@+id/txtImageCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0 images selected"
+        android:textColor="#666666"
+        android:layout_marginBottom="24dp"/>
+
+    <Button
+        android:id="@+id/btnSubmitListing"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Post Listing"
+        android:backgroundTint="#4CAF50"
+        android:textColor="#FFFFFF"
+        android:padding="12dp"/>
+
+</LinearLayout>
