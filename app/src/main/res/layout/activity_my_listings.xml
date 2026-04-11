@@ -3,30 +3,65 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="10dp"
-    android:background="#FFFFFF">
+    android:background="#FFFCF2">
 
-    <TextView
-        android:id="@+id/txtMyListingsTitle"
-        android:layout_width="wrap_content"
+    <!-- Green Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="My Active Listings"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="5dp"/>
+        android:orientation="vertical"
+        android:background="@drawable/bg_header_green"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
+        android:paddingTop="48dp"
+        android:paddingBottom="24dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tap and hold a car to delete it."
-        android:textSize="14sp"
-        android:textColor="#888888"
-        android:layout_marginBottom="15dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🔑 Quick Keys"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:textColor="#F0DFA0"
+            android:fontFamily="serif"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:id="@+id/txtMyListingsTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="My Listings"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="#FFFCF2"
+            android:fontFamily="serif"
+            android:layout_marginBottom="6dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hold any listing to remove it"
+            android:textSize="13sp"
+            android:textColor="#A8C4A0"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="#C8973A"/>
 
     <ListView
         android:id="@+id/listViewMyCars"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:divider="#CCCCCC"
-        android:dividerHeight="1dp" />
+        android:background="#FFFCF2"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:clipToPadding="false"/>
+
 </LinearLayout>

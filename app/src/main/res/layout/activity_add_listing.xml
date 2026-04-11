@@ -1,85 +1,223 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="20dp"
-    android:gravity="center_horizontal"
-    android:background="#F5F5F5">
+    android:background="#FFFCF2">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Post a New Car"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="24dp"
-        android:textColor="#333333"/>
-
-    <EditText
-        android:id="@+id/editMake"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Make (e.g. Toyota)"
-        android:inputType="textCapWords"
-        android:padding="12dp"
-        android:background="@android:drawable/editbox_background"
-        android:layout_marginBottom="12dp"/>
+        android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/editModel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Model (e.g. Camry)"
-        android:inputType="textCapWords"
-        android:padding="12dp"
-        android:background="@android:drawable/editbox_background"
-        android:layout_marginBottom="12dp"/>
+        <!-- Green Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/bg_header_green"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
+            android:paddingTop="48dp"
+            android:paddingBottom="28dp">
 
-    <EditText
-        android:id="@+id/editYear"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Year (e.g. 2024)"
-        android:inputType="number"
-        android:padding="12dp"
-        android:background="@android:drawable/editbox_background"
-        android:layout_marginBottom="12dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🔑 Quick Keys"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="#F0DFA0"
+                android:fontFamily="serif"
+                android:layout_marginBottom="8dp"/>
 
-    <EditText
-        android:id="@+id/editPrice"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Price ($)"
-        android:inputType="numberDecimal"
-        android:padding="12dp"
-        android:background="@android:drawable/editbox_background"
-        android:layout_marginBottom="12dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Post a New Car"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:textColor="#FFFCF2"
+                android:fontFamily="serif"/>
 
-    <Button
-        android:id="@+id/btnPickImages"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Select Car Photos"
-        android:backgroundTint="#FF9800"
-        android:layout_marginBottom="8dp"/>
+        </LinearLayout>
 
-    <TextView
-        android:id="@+id/txtImageCount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0 images selected"
-        android:textColor="#666666"
-        android:layout_marginBottom="24dp"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:background="#C8973A"/>
 
-    <Button
-        android:id="@+id/btnSubmitListing"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Post Listing"
-        android:backgroundTint="#4CAF50"
-        android:textColor="#FFFFFF"
-        android:padding="12dp"/>
+        <!-- Form body -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
 
-</LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="VEHICLE DETAILS"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.12"
+                android:textColor="#C8973A"
+                android:layout_marginBottom="16dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Make"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="#1B5E35"
+                android:layout_marginBottom="6dp"/>
+
+            <EditText
+                android:id="@+id/editMake"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:hint="e.g. Toyota"
+                android:inputType="textCapWords"
+                android:background="@drawable/input_white"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textColor="#1A1A1A"
+                android:textColorHint="#AAAAAA"
+                android:layout_marginBottom="16dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Model"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="#1B5E35"
+                android:layout_marginBottom="6dp"/>
+
+            <EditText
+                android:id="@+id/editModel"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:hint="e.g. Camry"
+                android:inputType="textCapWords"
+                android:background="@drawable/input_white"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textColor="#1A1A1A"
+                android:textColorHint="#AAAAAA"
+                android:layout_marginBottom="16dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="24dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginEnd="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Year"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:textColor="#1B5E35"
+                        android:layout_marginBottom="6dp"/>
+
+                    <EditText
+                        android:id="@+id/editYear"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:hint="2024"
+                        android:inputType="number"
+                        android:background="@drawable/input_white"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:textColor="#1A1A1A"
+                        android:textColorHint="#AAAAAA"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Price ($)"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:textColor="#1B5E35"
+                        android:layout_marginBottom="6dp"/>
+
+                    <EditText
+                        android:id="@+id/editPrice"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:hint="25000"
+                        android:inputType="numberDecimal"
+                        android:background="@drawable/input_white"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:textColor="#1A1A1A"
+                        android:textColorHint="#AAAAAA"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Photos section -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#E8D9A8"
+                android:layout_marginBottom="20dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PHOTOS"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.12"
+                android:textColor="#C8973A"
+                android:layout_marginBottom="12dp"/>
+
+            <Button
+                android:id="@+id/btnPickImages"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:text="📷  Select Car Photos"
+                android:textSize="14sp"
+                android:textColor="#1B5E35"
+                android:textStyle="bold"
+                android:backgroundTint="#E8D9A8"
+                android:layout_marginBottom="10dp"/>
+
+            <TextView
+                android:id="@+id/txtImageCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0 images selected"
+                android:textColor="#9AAA90"
+                android:textSize="13sp"
+                android:layout_marginBottom="28dp"/>
+
+            <Button
+                android:id="@+id/btnSubmitListing"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:text="Post Listing"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:textColor="#FFFCF2"
+                android:backgroundTint="#1B5E35"/>
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

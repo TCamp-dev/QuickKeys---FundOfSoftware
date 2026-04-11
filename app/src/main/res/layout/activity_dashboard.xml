@@ -1,103 +1,210 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="20dp"
-    android:background="#F5F5F5">
-
-    <TextView
-        android:id="@+id/txtWelcome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Welcome to QuickKeys"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="10dp"/>
-
-    <TextView
-        android:id="@+id/txtRoleDisplay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Account: User"
-        android:textSize="16sp"
-        android:layout_marginBottom="20dp"/>
-
-    <RadioGroup
-        android:id="@+id/toggleMode"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="20dp"
-        android:background="#E0E0E0"
-        android:padding="5dp"
-        android:visibility="gone">
-
-        <RadioButton
-            android:id="@+id/radioBuyer"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="Buyer Mode"
-            android:textStyle="bold"
-            android:checked="true"/>
-
-        <RadioButton
-            android:id="@+id/radioSeller"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:text="Seller Mode"/>
-    </RadioGroup>
+    android:background="#FFFCF2">
 
     <LinearLayout
-        android:id="@+id/layoutBuyer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:visibility="gone">
-        <Button
-            android:id="@+id/btnBrowseCars"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Browse Car Listings" />
-    </LinearLayout>
+        android:orientation="vertical">
 
-    <LinearLayout
-        android:id="@+id/layoutSeller"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:visibility="gone">
-        <Button
-            android:id="@+id/btnPostCar"
+        <!-- Green Header -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Post New Car for Sale" />
-        <Button
-            android:id="@+id/btnManageListings"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Manage My Listings" />
-    </LinearLayout>
+            android:orientation="vertical"
+            android:background="@drawable/bg_header_green"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
+            android:paddingTop="48dp"
+            android:paddingBottom="32dp">
 
-    <LinearLayout
-        android:id="@+id/layoutAdmin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:visibility="gone">
-        <Button
-            android:id="@+id/btnAdminUsers"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Manage All Users" />
-        <Button
-            android:id="@+id/btnAdminListings"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Delete Any Listing" />
-    </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🔑 Quick Keys"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#F0DFA0"
+                android:fontFamily="serif"
+                android:layout_marginBottom="14dp"/>
 
-</LinearLayout>
+            <TextView
+                android:id="@+id/txtWelcome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Welcome back!"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:textColor="#FFFCF2"
+                android:fontFamily="serif"
+                android:layout_marginBottom="6dp"/>
+
+            <TextView
+                android:id="@+id/txtRoleDisplay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Account: User"
+                android:textSize="14sp"
+                android:textColor="#A8C4A0"/>
+
+        </LinearLayout>
+
+        <!-- Gold accent bar -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:background="#C8973A"/>
+
+        <!-- Mode Toggle -->
+        <RadioGroup
+            android:id="@+id/toggleMode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="#F5EDD6"
+            android:padding="10dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="24dp"
+            android:visibility="gone">
+
+            <RadioButton
+                android:id="@+id/radioBuyer"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="44dp"
+                android:text="🔍  Buyer"
+                android:textStyle="bold"
+                android:textColor="#1B5E35"
+                android:buttonTint="#1B5E35"
+                android:checked="true"/>
+
+            <RadioButton
+                android:id="@+id/radioSeller"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="44dp"
+                android:text="🚗  Seller"
+                android:textStyle="bold"
+                android:textColor="#1B5E35"
+                android:buttonTint="#1B5E35"/>
+
+        </RadioGroup>
+
+        <!-- Buyer Layout -->
+        <LinearLayout
+            android:id="@+id/layoutBuyer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="What are you looking for?"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#0F3520"
+                android:fontFamily="serif"
+                android:layout_marginBottom="16dp"/>
+
+            <Button
+                android:id="@+id/btnBrowseCars"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:text="Browse All Listings"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:textColor="#FFFCF2"
+                android:backgroundTint="#1B5E35"/>
+
+        </LinearLayout>
+
+        <!-- Seller Layout -->
+        <LinearLayout
+            android:id="@+id/layoutSeller"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Seller Tools"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#0F3520"
+                android:fontFamily="serif"
+                android:layout_marginBottom="16dp"/>
+
+            <Button
+                android:id="@+id/btnPostCar"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:text="Post a Car for Sale"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:textColor="#FFFCF2"
+                android:backgroundTint="#1B5E35"
+                android:layout_marginBottom="12dp"/>
+
+            <Button
+                android:id="@+id/btnManageListings"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:text="Manage My Listings"
+                android:textSize="14sp"
+                android:textColor="#1B5E35"
+                android:backgroundTint="#E8D9A8"/>
+
+        </LinearLayout>
+
+        <!-- Admin Layout -->
+        <LinearLayout
+            android:id="@+id/layoutAdmin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Admin Controls"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#0F3520"
+                android:fontFamily="serif"
+                android:layout_marginBottom="16dp"/>
+
+            <Button
+                android:id="@+id/btnAdminUsers"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:text="Manage All Users"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:textColor="#FFFCF2"
+                android:backgroundTint="#7B2D2D"
+                android:layout_marginBottom="12dp"/>
+
+            <Button
+                android:id="@+id/btnAdminListings"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:text="Moderate Listings"
+                android:textSize="14sp"
+                android:textColor="#7B2D2D"
+                android:backgroundTint="#F5DDD0"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
