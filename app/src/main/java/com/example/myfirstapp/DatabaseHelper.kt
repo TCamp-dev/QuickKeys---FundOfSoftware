@@ -13,7 +13,8 @@ data class CarListing(
     val model: String,
     val year: Int,
     val price: Double,
-    val images: List<String> = emptyList()
+    val images: List<String> = emptyList(),
+    val purchased: Int       //added sold or not: 0 = no, 1 = yes
 )
 
 data class UserProfile(
@@ -26,7 +27,8 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, "QuickKeys.db
 
     override fun onCreate(db: SQLiteDatabase) {
         db.execSQL("CREATE TABLE users (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT, password TEXT, role TEXT)")
-        db.execSQL("CREATE TABLE listings (id INTEGER PRIMARY KEY AUTOINCREMENT, sellerName TEXT, make TEXT, model TEXT, year INTEGER, price REAL)")
+        //added purchased field into table
+        db.execSQL("CREATE TABLE listings (id INTEGER PRIMARY KEY AUTOINCREMENT, sellerName TEXT, make TEXT, model TEXT, year INTEGER, price REAL, purchased INTEGER DEFAULT 0)")
         db.execSQL("CREATE TABLE car_images (id INTEGER PRIMARY KEY AUTOINCREMENT, listingId INTEGER, imageUri TEXT, FOREIGN KEY(listingId) REFERENCES listings(id))")
     }
 
@@ -66,6 +68,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, "QuickKeys.db
             put("model", model)
             put("year", year)
             put("price", price)
+            put("purchased", 0)
         }
 
         val listingId = db.insert("listings", null, values)
@@ -85,7 +88,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, "QuickKeys.db
     fun getAllListings(): List<CarListing> {
         val carList = mutableListOf<CarListing>()
         val db = this.readableDatabase
-        val cursor = db.rawQuery("SELECT * FROM listings", null)
+        val cursor = db.rawQuery("SELECT * FROM listings WHERE purchased = 0", null)
 
         if (cursor.moveToFirst()) {
             do {
@@ -96,7 +99,8 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, "QuickKeys.db
                 val year = cursor.getInt(cursor.getColumnIndexOrThrow("year"))
                 val price = cursor.getDouble(cursor.getColumnIndexOrThrow("price"))
                 val images = getImagesForListing(id)
-                carList.add(CarListing(id, seller, make, model, year, price, images))
+                val purchased = cursor.getInt(cursor.getColumnIndexOrThrow("purchased")) //added
+                carList.add(CarListing(id, seller, make, model, year, price, images, purchased))  //added purchased
             } while (cursor.moveToNext())
         }
         cursor.close()
@@ -130,7 +134,8 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, "QuickKeys.db
                 val year = cursor.getInt(cursor.getColumnIndexOrThrow("year"))
                 val price = cursor.getDouble(cursor.getColumnIndexOrThrow("price"))
                 val images = getImagesForListing(id)
-                carList.add(CarListing(id, sellerName, make, model, year, price, images))
+                val purchased = cursor.getInt(cursor.getColumnIndexOrThrow("purchased"))  //added purchase
+                carList.add(CarListing(id, sellerName, make, model, year, price, images, purchased)) //added purchase
             } while (cursor.moveToNext())
         }
         cursor.close()
@@ -139,8 +144,13 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, "QuickKeys.db
 
     fun deleteListing(listingId: Int) {
         val db = this.writableDatabase
-        db.delete("car_images", "listingId = ?", arrayOf(listingId.toString()))
-        db.delete("listings", "id = ?", arrayOf(listingId.toString()))
+        val values = ContentValues().apply {
+            put("purchased", 1)
+        }
+        db.update("listings",values,"id = ?", arrayOf(listingId.toString()))
+//        db.delete("car_images", "listingId = ?", arrayOf(listingId.toString()))
+//        db.delete("listings", "id = ?", arrayOf(listingId.toString()))
+
     }
 
     // --- NEW ADMIN FUNCTIONS ---

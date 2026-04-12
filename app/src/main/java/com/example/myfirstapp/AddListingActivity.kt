@@ -13,6 +13,7 @@ class AddListingActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        supportActionBar?.hide()
         setContentView(R.layout.activity_add_listing)
 
         val editMake: EditText = findViewById(R.id.editMake)
@@ -54,6 +55,7 @@ class AddListingActivity : AppCompatActivity() {
             val model = editModel.text.toString()
             val year = editYear.text.toString().toIntOrNull() ?: 0
             val price = editPrice.text.toString().toDoubleOrNull() ?: 0.0
+
 
             // FIX: Get the actual name passed from DashboardActivity
             val sellerName = intent.getStringExtra("USERNAME") ?: "Unknown Seller"

@@ -14,6 +14,7 @@ class AdminListingsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        supportActionBar?.hide()
         // We are reusing the layout you already made!
         setContentView(R.layout.activity_my_listings)
 

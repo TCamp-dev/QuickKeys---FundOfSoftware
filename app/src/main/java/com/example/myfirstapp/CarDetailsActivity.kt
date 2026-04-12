@@ -11,6 +11,7 @@ import androidx.viewpager2.widget.ViewPager2
 class CarDetailsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        supportActionBar?.hide()
         setContentView(R.layout.activity_car_details)
 
         val carId = intent.getIntExtra("CAR_ID", -1)
@@ -50,6 +51,7 @@ class CarDetailsActivity : AppCompatActivity() {
             btnBuyNow.setOnClickListener {
                 val paymentIntent = Intent(this, PaymentActivity::class.java)
                 paymentIntent.putExtra("CAR_INFO", carInfo)
+                paymentIntent.putExtra("CAR_ID", carId)
                 startActivity(paymentIntent)
             }
         }

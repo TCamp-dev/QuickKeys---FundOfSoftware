@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 class BrowseListingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        supportActionBar?.hide()
         setContentView(R.layout.activity_browse_listings)
 
         // 1. Link the ListView from your layout

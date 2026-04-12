@@ -8,13 +8,18 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
+
 class PaymentActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        supportActionBar?.hide()
         setContentView(R.layout.activity_payment)
 
+        val db = DatabaseHelper(this)
+
         val carInfo = intent.getStringExtra("CAR_INFO") ?: "Unknown Car"
+        val carId = intent.getIntExtra("CAR_ID", -1)
 
         val summaryText: TextView = findViewById(R.id.txtCheckoutSummary)
         val editCard: EditText = findViewById(R.id.editCardNumber)
@@ -45,6 +50,8 @@ class PaymentActivity : AppCompatActivity() {
                 Toast.makeText(this, "Invalid CVV", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
+
+            db.deleteListing(carId)
 
             // If everything passes (Happy Path)
             Toast.makeText(this, "Payment Successful! Car purchased.", Toast.LENGTH_LONG).show()
