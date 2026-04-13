@@ -47,7 +47,7 @@ class AdminUsersActivity : AppCompatActivity() {
         val displayStrings = userList.map { "Username: ${it.username}\nRole: ${it.role}" }
 
         // We use Android's built-in simple list layout here to save you from making another XML file
-        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, displayStrings)
+        val adapter = ArrayAdapter(this, R.layout.list_item_user, displayStrings)
         listView.adapter = adapter
     }
 }
