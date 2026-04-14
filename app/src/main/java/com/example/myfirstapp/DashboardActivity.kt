@@ -8,6 +8,7 @@ import android.widget.LinearLayout
 import android.widget.RadioGroup
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.myfirstapp.ui.theme.ProfileActivity
 
 class DashboardActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,6 +41,11 @@ class DashboardActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.btnManageListings).setOnClickListener {
             val intent = Intent(this, MyListingsActivity::class.java)
+            intent.putExtra("USERNAME", username)
+            startActivity(intent)
+        }
+        findViewById<Button>(R.id.btnProfileIcon).setOnClickListener {
+            val intent = Intent(this, ProfileActivity::class.java)
             intent.putExtra("USERNAME", username)
             startActivity(intent)
         }

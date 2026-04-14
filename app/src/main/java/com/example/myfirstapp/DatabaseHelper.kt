@@ -154,12 +154,12 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, "QuickKeys.db
 
     }
 
-    fun getBuyerPurchases(id: Int):List<CarListing>
-    {
+    fun getBuyerPurchases(id: Int):List<CarListing> {
         val carList = mutableListOf<CarListing>()
         val db = this.readableDatabase
 
-        val cursor = db.rawQuery("""SELECT listings.*
+        val cursor = db.rawQuery(
+            """SELECT listings.*
         FROM listings
         INNER JOIN purchases
         ON listings.id = purchases.listingId
@@ -177,13 +177,27 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, "QuickKeys.db
                 val year = cursor.getInt(cursor.getColumnIndexOrThrow("year"))
                 val price = cursor.getDouble(cursor.getColumnIndexOrThrow("price"))
                 val images = getImagesForListing(id)
-                val purchased = cursor.getInt(cursor.getColumnIndexOrThrow("purchased"))  //added purchase
-                carList.add(CarListing(id, seller, make, model, year, price, images, purchased)) //added purchase
+                val purchased =
+                    cursor.getInt(cursor.getColumnIndexOrThrow("purchased"))  //added purchase
+                carList.add(
+                    CarListing(
+                        id,
+                        seller,
+                        make,
+                        model,
+                        year,
+                        price,
+                        images,
+                        purchased
+                    )
+                ) //added purchase
             } while (cursor.moveToNext())
+        }
 
-            cursor.close()
-            return carList
+        cursor.close()
+        return carList
     }
+
 
     // --- NEW ADMIN FUNCTIONS ---
 
