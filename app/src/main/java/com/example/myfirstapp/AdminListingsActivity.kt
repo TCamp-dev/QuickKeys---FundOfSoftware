@@ -16,6 +16,7 @@ class AdminListingsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
         // We are reusing the layout you already made!
+        supportActionBar?.hide()
         setContentView(R.layout.activity_my_listings)
 
         db = DatabaseHelper(this)

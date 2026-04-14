@@ -1,0 +1,481 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFCF2">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Green Header with Profile Photo overlapping -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/bg_header_green"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
+            android:paddingTop="48dp"
+            android:paddingBottom="60dp"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="🔑 Quick Keys"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="#F0DFA0"
+                android:fontFamily="serif"
+                android:layout_marginBottom="20dp"/>
+
+            <!-- Profile Picture Circle -->
+            <FrameLayout
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginBottom="14dp">
+
+                <ImageView
+                    android:id="@+id/imgProfilePic"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:scaleType="centerCrop"
+                    android:src="@android:drawable/ic_menu_myplaces"
+                    android:background="@drawable/circle_gold_border"
+                    android:padding="3dp"/>
+
+                <!-- Camera edit badge -->
+                <TextView
+                    android:id="@+id/btnEditPhoto"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:text="📷"
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    android:background="@drawable/circle_green_solid"
+                    android:layout_gravity="bottom|end"/>
+
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/txtProfileName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Username"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="#FFFCF2"
+                android:fontFamily="serif"
+                android:layout_marginBottom="4dp"/>
+
+            <TextView
+                android:id="@+id/txtProfileRole"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Member"
+                android:textSize="13sp"
+                android:textColor="#A8C4A0"/>
+
+        </LinearLayout>
+
+        <!-- Gold accent bar -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:background="#C8973A"/>
+
+        <!-- Stats Row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="#FFFCF2"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp">
+
+            <!-- Purchases Stat -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:background="@drawable/card_listing"
+                android:padding="14dp"
+                android:layout_marginEnd="8dp">
+
+                <TextView
+                    android:id="@+id/txtPurchaseCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textSize="26sp"
+                    android:textStyle="bold"
+                    android:textColor="#1B5E35"
+                    android:fontFamily="serif"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Purchases"
+                    android:textSize="11sp"
+                    android:textColor="#9AAA90"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.05"/>
+
+            </LinearLayout>
+
+            <!-- Sales Stat -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:background="@drawable/card_listing"
+                android:padding="14dp"
+                android:layout_marginStart="8dp">
+
+                <TextView
+                    android:id="@+id/txtSalesCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textSize="26sp"
+                    android:textStyle="bold"
+                    android:textColor="#1B5E35"
+                    android:fontFamily="serif"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sales"
+                    android:textSize="11sp"
+                    android:textColor="#9AAA90"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.05"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Section: Account Details -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ACCOUNT DETAILS"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.12"
+                android:textColor="#C8973A"
+                android:layout_marginBottom="12dp"/>
+
+            <!-- Address Row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/card_listing"
+                android:padding="16dp"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="📍"
+                    android:textSize="20sp"
+                    android:layout_marginEnd="14dp"/>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Address"
+                        android:textSize="11sp"
+                        android:textStyle="bold"
+                        android:textColor="#9AAA90"
+                        android:letterSpacing="0.05"
+                        android:layout_marginBottom="2dp"/>
+
+                    <TextView
+                        android:id="@+id/txtProfileAddress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Not set"
+                        android:textSize="15sp"
+                        android:textColor="#0F3520"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="›"
+                    android:textSize="22sp"
+                    android:textColor="#C8973A"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+            <!-- Email Row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/card_listing"
+                android:padding="16dp"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="✉️"
+                    android:textSize="20sp"
+                    android:layout_marginEnd="14dp"/>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Email"
+                        android:textSize="11sp"
+                        android:textStyle="bold"
+                        android:textColor="#9AAA90"
+                        android:letterSpacing="0.05"
+                        android:layout_marginBottom="2dp"/>
+
+                    <TextView
+                        android:id="@+id/txtProfileEmail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Not set"
+                        android:textSize="15sp"
+                        android:textColor="#0F3520"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="›"
+                    android:textSize="22sp"
+                    android:textColor="#C8973A"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Section: Activity -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ACTIVITY"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.12"
+                android:textColor="#C8973A"
+                android:layout_marginBottom="12dp"/>
+
+            <!-- Purchase History -->
+            <LinearLayout
+                android:id="@+id/btnPurchaseHistory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/card_listing"
+                android:padding="16dp"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🛒"
+                    android:textSize="20sp"
+                    android:layout_marginEnd="14dp"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Purchase History"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:textColor="#0F3520"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="›"
+                    android:textSize="22sp"
+                    android:textColor="#C8973A"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+            <!-- Sales History -->
+            <LinearLayout
+                android:id="@+id/btnSalesHistory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/card_listing"
+                android:padding="16dp"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🚗"
+                    android:textSize="20sp"
+                    android:layout_marginEnd="14dp"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Sales History"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:textColor="#0F3520"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="›"
+                    android:textSize="22sp"
+                    android:textColor="#C8973A"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Section: Settings -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SETTINGS"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.12"
+                android:textColor="#C8973A"
+                android:layout_marginBottom="12dp"/>
+
+            <!-- Edit Details -->
+            <LinearLayout
+                android:id="@+id/btnEditDetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/card_listing"
+                android:padding="16dp"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="✏️"
+                    android:textSize="20sp"
+                    android:layout_marginEnd="14dp"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Edit Details"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:textColor="#0F3520"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="›"
+                    android:textSize="22sp"
+                    android:textColor="#C8973A"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Danger Zone -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="32dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="DANGER ZONE"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.12"
+                android:textColor="#B03030"
+                android:layout_marginBottom="12dp"/>
+
+            <Button
+                android:id="@+id/btnDeleteAccount"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:text="Delete My Account"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="#B03030"
+                android:backgroundTint="#F5DDD0"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
