@@ -30,6 +30,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, "QuickKeys.db
         //added purchased field into table
         db.execSQL("CREATE TABLE listings (id INTEGER PRIMARY KEY AUTOINCREMENT, sellerName TEXT, make TEXT, model TEXT, year INTEGER, price REAL, purchased INTEGER DEFAULT 0)")
         db.execSQL("CREATE TABLE car_images (id INTEGER PRIMARY KEY AUTOINCREMENT, listingId INTEGER, imageUri TEXT, FOREIGN KEY(listingId) REFERENCES listings(id))")
+        db.execSQL("CREATE TABLE purchases (id INTEGER PRIMARY KEY AUTOINCREMENT, listingId INTEGER, buyerId INTEGER)")
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
@@ -153,6 +154,37 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, "QuickKeys.db
 
     }
 
+    fun getBuyerPurchases(id: Int):List<CarListing>
+    {
+        val carList = mutableListOf<CarListing>()
+        val db = this.readableDatabase
+
+        val cursor = db.rawQuery("""SELECT listings.*
+        FROM listings
+        INNER JOIN purchases
+        ON listings.id = purchases.listingId
+        WHERE purchases.buyerId = ?
+        """.trimIndent(),
+            arrayOf(id.toString())
+        )
+
+        if (cursor.moveToFirst()) {
+            do {
+                val id = cursor.getInt(cursor.getColumnIndexOrThrow("id"))
+                val seller = cursor.getString(cursor.getColumnIndexOrThrow("sellerName"))
+                val make = cursor.getString(cursor.getColumnIndexOrThrow("make"))
+                val model = cursor.getString(cursor.getColumnIndexOrThrow("model"))
+                val year = cursor.getInt(cursor.getColumnIndexOrThrow("year"))
+                val price = cursor.getDouble(cursor.getColumnIndexOrThrow("price"))
+                val images = getImagesForListing(id)
+                val purchased = cursor.getInt(cursor.getColumnIndexOrThrow("purchased"))  //added purchase
+                carList.add(CarListing(id, seller, make, model, year, price, images, purchased)) //added purchase
+            } while (cursor.moveToNext())
+
+            cursor.close()
+            return carList
+    }
+
     // --- NEW ADMIN FUNCTIONS ---
 
     fun getAllUsers(): List<UserProfile> {
@@ -176,4 +208,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, "QuickKeys.db
         val db = this.writableDatabase
         db.delete("users", "id = ?", arrayOf(userId.toString()))
     }
+
+
+
 }
