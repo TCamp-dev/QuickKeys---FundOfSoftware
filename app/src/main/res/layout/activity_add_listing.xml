@@ -170,6 +170,49 @@
                         android:textColorHint="#AAAAAA"/>
                 </LinearLayout>
             </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pickup Location"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="#1B5E35"
+                android:layout_marginBottom="6dp"/>
+
+            <EditText
+                android:id="@+id/editLocation"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:hint="e.g. Arlington, TX"
+                android:inputType="textCapWords"
+                android:background="@drawable/input_white"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textColor="#1A1A1A"
+                android:textColorHint="#AAAAAA"
+                android:layout_marginBottom="16dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Contact Number"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="#1B5E35"
+                android:layout_marginBottom="6dp"/>
+
+            <EditText
+                android:id="@+id/editPhone"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:hint="e.g. 817-555-0123"
+                android:inputType="phone"
+                android:background="@drawable/input_white"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textColor="#1A1A1A"
+                android:textColorHint="#AAAAAA"
+                android:layout_marginBottom="24dp"/>
 
             <!-- Photos section -->
             <View

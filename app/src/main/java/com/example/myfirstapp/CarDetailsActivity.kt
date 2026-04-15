@@ -16,9 +16,11 @@ class CarDetailsActivity : AppCompatActivity() {
 
         val carId = intent.getIntExtra("CAR_ID", -1)
         val carInfo = intent.getStringExtra("CAR_INFO") ?: "Car Details"
+        val userId = intent.getIntExtra("USER_ID", -1)
 
         // Check if the user viewing is the seller
         val isSellerView = intent.getBooleanExtra("IS_SELLER_VIEW", false)
+
 
         // FIXED: Matched these IDs to your XML file exactly
         val title: TextView = findViewById(R.id.txtDetailTitle)
@@ -45,13 +47,15 @@ class CarDetailsActivity : AppCompatActivity() {
         if (isSellerView) {
             // Hide the button if it's the seller's own car
             btnBuyNow.visibility = View.GONE
-        } else {
+        }
+        else {
             // Ensure it is visible for buyers and link it to the Payment Module
             btnBuyNow.visibility = View.VISIBLE
             btnBuyNow.setOnClickListener {
                 val paymentIntent = Intent(this, PaymentActivity::class.java)
                 paymentIntent.putExtra("CAR_INFO", carInfo)
                 paymentIntent.putExtra("CAR_ID", carId)
+                paymentIntent.putExtra("Buyer_ID", userId)
                 startActivity(paymentIntent)
             }
         }

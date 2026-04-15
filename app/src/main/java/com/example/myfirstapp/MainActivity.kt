@@ -51,13 +51,16 @@ class MainActivity : AppCompatActivity() {
             }
             // -----------------------------------
 
-            val userRole = db.getUserRole(user, pass)
+            val loggedUser = db.getUser(user, pass)
 
-            if (userRole != null) {
+
+            if (loggedUser != null) {
                 Toast.makeText(this, "Welcome $user!", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, DashboardActivity::class.java)
-                intent.putExtra("USERNAME", user)
-                intent.putExtra("ROLE", userRole)
+                intent.putExtra("USER_ID", loggedUser.id)
+                intent.putExtra("USERNAME", loggedUser.username)
+                intent.putExtra("ROLE", loggedUser.role)
+
                 startActivity(intent)
             } else {
                 Toast.makeText(this, "Invalid credentials", Toast.LENGTH_SHORT).show()
