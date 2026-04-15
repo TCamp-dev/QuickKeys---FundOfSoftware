@@ -20,11 +20,22 @@ class AddListingActivity : AppCompatActivity() {
         val editModel: EditText = findViewById(R.id.editModel)
         val editYear: EditText = findViewById(R.id.editYear)
         val editPrice: EditText = findViewById(R.id.editPrice)
+        val editLocation: EditText = findViewById(R.id.editLocation)
+        val editPhone: EditText = findViewById(R.id.editPhone)
         val btnPick: Button = findViewById(R.id.btnPickImages)
         val txtCount: TextView = findViewById(R.id.txtImageCount)
         val btnSubmit: Button = findViewById(R.id.btnSubmitListing)
 
         val db = DatabaseHelper(this)
+
+        val userId = intent.getIntExtra("USER_ID", -1)
+        val user = db.getUserById(userId)
+        var sellerName = ""
+        if (user != null)
+        {
+            sellerName = user.username
+        }
+
 
         // The Photo Picker Logic with Persistable Permissions
         val pickMedia = registerForActivityResult(ActivityResultContracts.PickMultipleVisualMedia(5)) { uris ->
@@ -41,6 +52,7 @@ class AddListingActivity : AppCompatActivity() {
                         e.printStackTrace()
                     }
                     selectedImageUris.add(uri.toString())
+
                 }
                 txtCount.text = "${uris.size} images selected"
             }
@@ -51,17 +63,20 @@ class AddListingActivity : AppCompatActivity() {
         }
 
         btnSubmit.setOnClickListener {
-            val make = editMake.text.toString()
-            val model = editModel.text.toString()
+            val make = editMake.text.toString().trim()
+            val model = editModel.text.toString().trim()
             val year = editYear.text.toString().toIntOrNull() ?: 0
             val price = editPrice.text.toString().toDoubleOrNull() ?: 0.0
+            val location = editLocation.text.toString().trim()
+            val phone = editPhone.text.toString().trim()
 
 
             // FIX: Get the actual name passed from DashboardActivity
-            val sellerName = intent.getStringExtra("USERNAME") ?: "Unknown Seller"
+
+
 
             if (make.isNotEmpty() && model.isNotEmpty()) {
-                val result = db.addListing(sellerName, make, model, year, price, selectedImageUris)
+                val result = db.addListing(userId, sellerName, make, model, year, price, location, phone, selectedImageUris)
 
                 if (result != -1L) {
                     Toast.makeText(this, "Car Posted by $sellerName!", Toast.LENGTH_SHORT).show()

@@ -8,7 +8,7 @@ import android.widget.LinearLayout
 import android.widget.RadioGroup
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.example.myfirstapp.ui.theme.ProfileActivity
+
 
 class DashboardActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,6 +18,7 @@ class DashboardActivity : AppCompatActivity() {
 
         val username = intent.getStringExtra("USERNAME") ?: "User"
         val role = intent.getStringExtra("ROLE") ?: "User"
+        val id = intent.getIntExtra("USER_ID", -1)
 
         val welcomeText: TextView = findViewById(R.id.txtWelcome)
         val roleText: TextView = findViewById(R.id.txtRoleDisplay)
@@ -35,7 +36,7 @@ class DashboardActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.btnPostCar).setOnClickListener {
             val intent = Intent(this, AddListingActivity::class.java)
-            intent.putExtra("USERNAME", username)
+            intent.putExtra("USER_ID", id)
             startActivity(intent)
         }
 
@@ -46,7 +47,7 @@ class DashboardActivity : AppCompatActivity() {
         }
         findViewById<Button>(R.id.btnProfileIcon).setOnClickListener {
             val intent = Intent(this, ProfileActivity::class.java)
-            intent.putExtra("USERNAME", username)
+            intent.putExtra("USER_ID", id) //change this
             startActivity(intent)
         }
 

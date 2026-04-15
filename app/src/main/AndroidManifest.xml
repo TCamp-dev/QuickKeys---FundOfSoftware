@@ -23,6 +23,9 @@
         <activity android:name=".CarDetailsActivity" />
         <activity android:name=".MyListingsActivity" />
         <activity android:name=".PaymentActivity" />
+        <activity android:name=".ProfileActivity" />
+        <activity android:name=".ViewPurchasesActivity" />
+        <activity android:name=".ReceiptActivity" />
 
         <activity android:name=".AdminUsersActivity" />
         <activity android:name=".AdminListingsActivity" />

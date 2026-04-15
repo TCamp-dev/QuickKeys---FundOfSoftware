@@ -7,6 +7,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import kotlin.random.Random
 
 
 class PaymentActivity : AppCompatActivity() {
@@ -20,6 +21,9 @@ class PaymentActivity : AppCompatActivity() {
 
         val carInfo = intent.getStringExtra("CAR_INFO") ?: "Unknown Car"
         val carId = intent.getIntExtra("CAR_ID", -1)
+        val userId = intent.getIntExtra("USER_ID", -1)
+        val user = db.getUserById(userId)
+
 
         val summaryText: TextView = findViewById(R.id.txtCheckoutSummary)
         val editCard: EditText = findViewById(R.id.editCardNumber)
@@ -51,15 +55,26 @@ class PaymentActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            db.deleteListing(carId)
+            // NEW: Fetch location and phone BEFORE we delete the listing!
+            val purchasedCar = db.getListingById(carId)
+            val location = purchasedCar?.location ?: "Location TBD"
+            val phone = purchasedCar?.phone ?: "Phone TBD"
 
-            // If everything passes (Happy Path)
-            Toast.makeText(this, "Payment Successful! Car purchased.", Toast.LENGTH_LONG).show()
+            // Delete the listing
+            db.addPurchase(carId, userId)
 
-            // Return to the Dashboard after a successful purchase
-            val intent = Intent(this, DashboardActivity::class.java)
-            // Clear the activity stack so they can't press 'back' to return to payment
-            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+            // Generate Random Order Number
+            val orderNumber = "QK-${Random.nextInt(100000, 999999)}"
+
+            Toast.makeText(this, "Payment Successful!", Toast.LENGTH_SHORT).show()
+
+            // Pass everything to the new Receipt Activity
+            val intent = Intent(this, ReceiptActivity::class.java).apply {
+                putExtra("ORDER_NUMBER", orderNumber)
+                putExtra("CAR_INFO", carInfo)
+                putExtra("LOCATION", location)
+                putExtra("PHONE", phone)
+            }
             startActivity(intent)
             finish()
         }
