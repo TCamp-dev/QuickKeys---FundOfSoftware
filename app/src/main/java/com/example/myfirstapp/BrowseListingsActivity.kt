@@ -30,6 +30,8 @@ class BrowseListingsActivity : AppCompatActivity() {
 
         db = DatabaseHelper(this)
 
+        val userId = intent.getIntExtra("USER_ID", -1)
+
         // 1. Link the ListView from your layout
         // NOTE: Ensure your activity_browse_listings.xml uses the ID "listViewCars"
         listView = findViewById(R.id.listViewCars)
@@ -88,6 +90,7 @@ class BrowseListingsActivity : AppCompatActivity() {
             // We still pass the text info for the title
             val carInfoString = "${selectedCar.year} ${selectedCar.make} ${selectedCar.model} - $${selectedCar.price}\nSold by: ${selectedCar.sellerName}"
             intent.putExtra("CAR_INFO", carInfoString)
+            intent.putExtra("USER_ID", userId)
 
             startActivity(intent)
         }

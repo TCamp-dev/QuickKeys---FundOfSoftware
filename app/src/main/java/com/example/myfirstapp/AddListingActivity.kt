@@ -55,7 +55,9 @@ class AddListingActivity : AppCompatActivity() {
 
 
         // The Photo Picker Logic with Persistable Permissions
-        val pickMedia = registerForActivityResult(ActivityResultContracts.PickMultipleVisualMedia(5)) { uris ->
+        val pickImages = registerForActivityResult(
+            ActivityResultContracts.OpenMultipleDocuments()
+        ) { uris ->
             if (uris.isNotEmpty()) {
                 selectedImageUris.clear()
                 uris.forEach { uri ->
@@ -77,7 +79,7 @@ class AddListingActivity : AppCompatActivity() {
         }
 
         btnPick.setOnClickListener {
-            pickMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
+            pickImages.launch(arrayOf("image/*"))
         }
 
         btnSubmit.setOnClickListener {

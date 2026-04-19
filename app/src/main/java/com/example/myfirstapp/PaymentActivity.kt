@@ -22,7 +22,7 @@ class PaymentActivity : AppCompatActivity() {
         val carInfo = intent.getStringExtra("CAR_INFO") ?: "Unknown Car"
         val carId = intent.getIntExtra("CAR_ID", -1)
         val userId = intent.getIntExtra("USER_ID", -1)
-        val user = db.getUserById(userId)
+
 
 
         val summaryText: TextView = findViewById(R.id.txtCheckoutSummary)
@@ -74,6 +74,7 @@ class PaymentActivity : AppCompatActivity() {
                 putExtra("CAR_INFO", carInfo)
                 putExtra("LOCATION", location)
                 putExtra("PHONE", phone)
+                putExtra("USER_ID", userId)
             }
             startActivity(intent)
             finish()

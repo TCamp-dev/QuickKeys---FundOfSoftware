@@ -14,6 +14,11 @@ class MainActivity : AppCompatActivity() {
 
         val db = DatabaseHelper(this)
 
+        val existing = db.getUser("admin", "admin123")
+        if (existing == null) {
+            db.addUser("admin", "admin123", "Admin")
+        }
+
         val usernameInput: EditText = findViewById(R.id.editUsername)
         val passwordInput: EditText = findViewById(R.id.editPassword)
         val loginBtn: Button = findViewById(R.id.btnLogin)
@@ -37,24 +42,33 @@ class MainActivity : AppCompatActivity() {
         }
 
         loginBtn.setOnClickListener {
-            val user = usernameInput.text.toString()
-            val pass = passwordInput.text.toString()
+            val user = usernameInput.text.toString().trim()
+            val pass = passwordInput.text.toString().trim()
 
-            // --- SECRET ADMIN LOGIN BACKDOOR ---
-            if (user == "admin" && pass == "admin123") {
-                Toast.makeText(this, "Admin Access Granted", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, DashboardActivity::class.java)
-                intent.putExtra("USERNAME", "Admin")
-                intent.putExtra("ROLE", "Admin")
-                startActivity(intent)
+            if (user.isBlank() || pass.isBlank()) {
+                Toast.makeText(this, "Fill all fields", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            // -----------------------------------
+
 
             val loggedUser = db.getUser(user, pass)
 
 
+
             if (loggedUser != null) {
+                usernameInput.text.clear()
+                passwordInput.text.clear()
+
+                if (loggedUser.role == "Admin")
+                {
+                    Toast.makeText(this, "Admin Access Granted", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this, DashboardActivity::class.java)
+                    intent.putExtra("USERNAME", "Admin")
+                    intent.putExtra("ROLE", "Admin")
+                    startActivity(intent)
+                    return@setOnClickListener
+                }
+
                 Toast.makeText(this, "Welcome $user!", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, DashboardActivity::class.java)
                 intent.putExtra("USER_ID", loggedUser.id)

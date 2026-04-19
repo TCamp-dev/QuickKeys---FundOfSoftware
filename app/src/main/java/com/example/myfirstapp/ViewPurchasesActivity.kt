@@ -20,12 +20,14 @@ class ViewPurchasesActivity : AppCompatActivity()  {
 
         db = DatabaseHelper(this)
         val id = intent.getIntExtra("USER_ID", -1)
-        val user = db.getUserById(id)
-        var username = ""
-        if(user != null)
-        {
-            username = user.username
+        if (id == -1) {
+            Toast.makeText(this, "Invalid user session", Toast.LENGTH_SHORT).show()
+            finish()
+            return
         }
+        val user = db.getUserById(id)
+        val buyerName = user?.username ?: "Unknown"
+
 
         val purchasesText: TextView = findViewById(R.id.txtMyListingsTitle)
         val tapInfo: TextView = findViewById(R.id.txtTapInfo)
@@ -46,7 +48,7 @@ class ViewPurchasesActivity : AppCompatActivity()  {
             val carInfoString =
                 "${selectedCar.year} ${selectedCar.make} ${selectedCar.model} - $${selectedCar.price}\n" +
                         "Sold by: ${selectedCar.sellerName}\n" +
-                        "Bought By: $username"
+                        "purchased by you: $buyerName"
 
             intent.putExtra("CAR_INFO", carInfoString)
             intent.putExtra("IS_SELLER_VIEW", true)

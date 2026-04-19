@@ -21,9 +21,14 @@ class ImageSliderAdapter(private val imageUris: List<String>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val file =   File(imageUris[position])
-        holder.imageView.setImageURI(Uri.fromFile(file))
+        val file = File(imageUris[position])
+
+        if (file.exists()) {
+            holder.imageView.setImageURI(Uri.fromFile(file))
+        } else {
+            holder.imageView.setImageResource(android.R.drawable.ic_menu_gallery)
+        }
     }
 
-    override fun getItemCount(): Int = imageUris.size
+    override fun getItemCount(): Int = imageUris?.size ?: 0
 }

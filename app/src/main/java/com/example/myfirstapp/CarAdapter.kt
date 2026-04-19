@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import java.io.File
 
 class CarAdapter(context: Context, private val cars: List<CarListing>) :
     ArrayAdapter<CarListing>(context, R.layout.list_item_car, cars) {
@@ -25,8 +26,13 @@ class CarAdapter(context: Context, private val cars: List<CarListing>) :
         priceText.text = "$${currentCar.price}"
 
         // Load the first image if it exists
-        if (currentCar.images.isNotEmpty()) {
-            imageView.setImageURI(Uri.parse(currentCar.images[0]))
+        if (!currentCar.images.isNullOrEmpty()) {
+            val file = File(currentCar.images[0])
+            if (file.exists()) {
+                imageView.setImageURI(Uri.fromFile(file))
+            } else {
+                imageView.setImageResource(android.R.drawable.ic_menu_gallery)
+            }
         } else {
             imageView.setImageResource(android.R.drawable.ic_menu_gallery)
         }

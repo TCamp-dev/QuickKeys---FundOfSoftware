@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.RadioGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 
@@ -16,9 +17,17 @@ class DashboardActivity : AppCompatActivity() {
         supportActionBar?.hide()
         setContentView(R.layout.activity_dashboard)
 
+
+
         val username = intent.getStringExtra("USERNAME") ?: "User"
         val role = intent.getStringExtra("ROLE") ?: "User"
         val id = intent.getIntExtra("USER_ID", -1)
+
+        if (id == -1 && role != "Admin") {
+            Toast.makeText(this, "Invalid session", Toast.LENGTH_SHORT).show()
+            finish()
+            return
+        }
 
         val welcomeText: TextView = findViewById(R.id.txtWelcome)
         val roleText: TextView = findViewById(R.id.txtRoleDisplay)
@@ -30,8 +39,17 @@ class DashboardActivity : AppCompatActivity() {
         val sellerLayout: LinearLayout = findViewById(R.id.layoutSeller)
         val adminLayout: LinearLayout = findViewById(R.id.layoutAdmin)
 
+        adminLayout.visibility = View.GONE
+        buyerLayout.visibility = View.GONE
+        sellerLayout.visibility = View.GONE
+        toggleMode.visibility = View.GONE
+
         findViewById<Button>(R.id.btnBrowseCars).setOnClickListener {
-            startActivity(Intent(this, BrowseListingsActivity::class.java))
+            val intent = Intent(this, BrowseListingsActivity::class.java)
+            intent.putExtra("USER_ID",id)
+            startActivity(intent)
+
+
         }
 
         findViewById<Button>(R.id.btnPostCar).setOnClickListener {
@@ -43,6 +61,7 @@ class DashboardActivity : AppCompatActivity() {
         findViewById<Button>(R.id.btnManageListings).setOnClickListener {
             val intent = Intent(this, MyListingsActivity::class.java)
             intent.putExtra("USERNAME", username)
+            intent.putExtra("USER_ID", id)
             startActivity(intent)
         }
         findViewById<Button>(R.id.btnProfileIcon).setOnClickListener {

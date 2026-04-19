@@ -55,7 +55,7 @@ class CarDetailsActivity : AppCompatActivity() {
                 val paymentIntent = Intent(this, PaymentActivity::class.java)
                 paymentIntent.putExtra("CAR_INFO", carInfo)
                 paymentIntent.putExtra("CAR_ID", carId)
-                paymentIntent.putExtra("Buyer_ID", userId)
+                paymentIntent.putExtra("USER_ID", userId)
                 startActivity(paymentIntent)
             }
         }

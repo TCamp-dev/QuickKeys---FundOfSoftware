@@ -21,11 +21,12 @@ class MyListingsActivity : AppCompatActivity() {
         db = DatabaseHelper(this)
         listView = findViewById(R.id.listViewMyCars)
         username = intent.getStringExtra("USERNAME") ?: "User"
+        val userId = intent.getIntExtra("USER_ID", -1)
 
-        loadMyListings()
+        loadMyListings(userId)
 
         listView.setOnItemClickListener { _, _, position, _ ->
-            val carList = db.getListingsBySeller(username)
+            val carList = db.getListingsBySeller(userId)
             val selectedCar = carList[position]
 
             val intent = Intent(this, CarDetailsActivity::class.java)
@@ -40,7 +41,7 @@ class MyListingsActivity : AppCompatActivity() {
         }
 
         listView.setOnItemLongClickListener { _, _, position, _ ->
-            val carList = db.getListingsBySeller(username)
+            val carList = db.getListingsBySeller(userId)
             val selectedCar = carList[position]
 
             AlertDialog.Builder(this)
@@ -49,7 +50,7 @@ class MyListingsActivity : AppCompatActivity() {
                 .setPositiveButton("Delete") { _, _ ->
                     db.deleteListing(selectedCar.id)
                     Toast.makeText(this, "Listing deleted", Toast.LENGTH_SHORT).show()
-                    loadMyListings()
+                    loadMyListings(userId)
                 }
                 .setNegativeButton("Cancel", null)
                 .show()
@@ -58,8 +59,8 @@ class MyListingsActivity : AppCompatActivity() {
         }
     }
 
-    private fun loadMyListings() {
-        val carList = db.getListingsBySeller(username)
+    private fun loadMyListings(id: Int) {
+        val carList = db.getListingsBySeller(id)
         val adapter = CarAdapter(this, carList)
         listView.adapter = adapter
     }

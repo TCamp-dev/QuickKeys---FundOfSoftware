@@ -18,6 +18,7 @@ class ReceiptActivity : AppCompatActivity() {
         val txtLocation: TextView = findViewById(R.id.txtPickupLocation)
         val txtPhone: TextView = findViewById(R.id.txtContactPhone)
         val btnDone: Button = findViewById(R.id.btnBackToDashboard)
+        val buyerId = intent.getIntExtra("USER_ID", -1)
 
         // Retrieve the data passed from PaymentActivity
         txtOrderNum.text = "Order #" + (intent.getStringExtra("ORDER_NUMBER") ?: "000000")
@@ -28,6 +29,7 @@ class ReceiptActivity : AppCompatActivity() {
         btnDone.setOnClickListener {
             // Return to the Dashboard and clear history
             val intent = Intent(this, DashboardActivity::class.java)
+            intent.putExtra("USER_ID", buyerId)
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
             startActivity(intent)
             finish()

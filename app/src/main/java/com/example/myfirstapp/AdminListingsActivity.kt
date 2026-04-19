@@ -11,10 +11,10 @@ class AdminListingsActivity : AppCompatActivity() {
 
     private lateinit var db: DatabaseHelper
     private lateinit var listView: ListView
+    private var carList: List<CarListing> = emptyList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        supportActionBar?.hide()
         // We are reusing the layout you already made!
         supportActionBar?.hide()
         setContentView(R.layout.activity_my_listings)
@@ -28,9 +28,14 @@ class AdminListingsActivity : AppCompatActivity() {
 
         loadAllListings()
 
+        if (carList.isEmpty()) {
+            Toast.makeText(this, "No listings available", Toast.LENGTH_SHORT).show()
+        }
+
         listView.setOnItemLongClickListener { _, _, position, _ ->
-            val carList = db.getAllListings()
-            val selectedCar = carList[position]
+
+            val selectedCar = carList[position]   // SAFE
+
 
             AlertDialog.Builder(this)
                 .setTitle("Admin Override: Delete Listing")
@@ -48,8 +53,7 @@ class AdminListingsActivity : AppCompatActivity() {
     }
 
     private fun loadAllListings() {
-        // Admins fetch ALL listings, not just ones by a specific seller
-        val carList = db.getAllListings()
+        carList = db.getAllListings()
         val adapter = CarAdapter(this, carList)
         listView.adapter = adapter
     }
