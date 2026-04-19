@@ -1,15 +1,32 @@
 package com.example.myfirstapp
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.widget.*
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import java.io.File
+import java.io.FileOutputStream
 
 class AddListingActivity : AppCompatActivity() {
 
     private var selectedImageUris = mutableListOf<String>()
+
+    private fun saveImageToInternalStorage(uri: Uri): String {
+        val inputStream = contentResolver.openInputStream(uri)
+        val fileName = "car_${System.currentTimeMillis()}.jpg"
+        val file = File(filesDir, fileName)
+
+        val outputStream = FileOutputStream(file)
+        inputStream?.copyTo(outputStream)
+
+        inputStream?.close()
+        outputStream.close()
+
+        return file.absolutePath
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,16 +59,17 @@ class AddListingActivity : AppCompatActivity() {
             if (uris.isNotEmpty()) {
                 selectedImageUris.clear()
                 uris.forEach { uri ->
-                    try {
-                        // This grants long-term access to the image file
-                        contentResolver.takePersistableUriPermission(
-                            uri,
-                            Intent.FLAG_GRANT_READ_URI_PERMISSION
-                        )
-                    } catch (e: Exception) {
-                        e.printStackTrace()
-                    }
-                    selectedImageUris.add(uri.toString())
+//                    try {
+//                        // This grants long-term access to the image file
+//                        contentResolver.takePersistableUriPermission(
+//                            uri,
+//                            Intent.FLAG_GRANT_READ_URI_PERMISSION
+//                        )
+//                    } catch (e: Exception) {
+//                        e.printStackTrace()
+//                    }
+                    val savedPath = saveImageToInternalStorage(uri)
+                    selectedImageUris.add(savedPath)
 
                 }
                 txtCount.text = "${uris.size} images selected"

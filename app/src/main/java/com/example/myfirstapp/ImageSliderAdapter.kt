@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import java.io.File
 
 class ImageSliderAdapter(private val imageUris: List<String>) :
     RecyclerView.Adapter<ImageSliderAdapter.ViewHolder>() {
@@ -20,7 +21,8 @@ class ImageSliderAdapter(private val imageUris: List<String>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.imageView.setImageURI(Uri.parse(imageUris[position]))
+        val file =   File(imageUris[position])
+        holder.imageView.setImageURI(Uri.fromFile(file))
     }
 
     override fun getItemCount(): Int = imageUris.size
