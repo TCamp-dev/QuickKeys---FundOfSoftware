@@ -11,74 +11,72 @@
         android:orientation="vertical"
         android:gravity="center_horizontal">
 
-        <!-- Logo Section -->
-
-        <!-- White/Cream Form Card -->
-
+        <!-- Hero section -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
             android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:paddingTop="72dp"
+            android:paddingBottom="40dp"
             android:paddingStart="32dp"
-            android:paddingTop="56dp"
-            android:paddingEnd="32dp"
-            android:paddingBottom="32dp">
+            android:paddingEnd="32dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
                 android:text="🔑"
-                android:textSize="52sp" />
+                android:textSize="56sp"
+                android:layout_marginBottom="12dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="serif"
                 android:text="Quick Keys"
+                android:textSize="42sp"
+                android:textStyle="bold"
                 android:textColor="#F0DFA0"
-                android:textSize="40sp"
-                android:textStyle="bold" />
+                android:fontFamily="serif"
+                android:layout_marginBottom="8dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
                 android:text="Find your perfect drive"
+                android:textSize="16sp"
                 android:textColor="#A8C4A0"
-                android:textSize="15sp" />
+                android:letterSpacing="0.03"/>
 
         </LinearLayout>
 
+        <!-- Card -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:background="#FFFCF2"
+            android:background="@drawable/card_bottom_sheet"
             android:paddingStart="28dp"
             android:paddingEnd="28dp"
             android:paddingTop="36dp"
-            android:paddingBottom="40dp">
+            android:paddingBottom="48dp">
 
-            <!-- Decorative gold bar -->
             <View
-                android:layout_width="48dp"
+                android:layout_width="40dp"
                 android:layout_height="4dp"
                 android:background="#C8973A"
-                android:layout_marginBottom="24dp"/>
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="28dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Login"
+                android:text="Sign In"
                 android:textSize="26sp"
                 android:textStyle="bold"
                 android:textColor="#0F3520"
                 android:fontFamily="serif"
-                android:layout_marginBottom="24dp"/>
+                android:layout_marginBottom="28dp"/>
 
-            <!-- Username field -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -86,24 +84,23 @@
                 android:textSize="12sp"
                 android:textStyle="bold"
                 android:textColor="#1B5E35"
-                android:letterSpacing="0.08"
-                android:layout_marginBottom="6dp"/>
+                android:letterSpacing="0.05"
+                android:layout_marginBottom="8dp"/>
 
             <EditText
                 android:id="@+id/editUsername"
                 android:layout_width="match_parent"
-                android:layout_height="52dp"
+                android:layout_height="54dp"
                 android:hint="Enter your username"
                 android:inputType="text"
-                android:background="@drawable/input_white"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
+                android:background="@drawable/input_rounded"
+                android:paddingStart="18dp"
+                android:paddingEnd="18dp"
                 android:textColor="#1A1A1A"
-                android:textColorHint="#AAAAAA"
+                android:textColorHint="#BBBBBB"
                 android:textSize="15sp"
-                android:layout_marginBottom="18dp"/>
+                android:layout_marginBottom="20dp"/>
 
-            <!-- Password field -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -111,64 +108,48 @@
                 android:textSize="12sp"
                 android:textStyle="bold"
                 android:textColor="#1B5E35"
-                android:letterSpacing="0.08"
-                android:layout_marginBottom="6dp"/>
+                android:letterSpacing="0.05"
+                android:layout_marginBottom="8dp"/>
 
             <EditText
                 android:id="@+id/editPassword"
                 android:layout_width="match_parent"
-                android:layout_height="52dp"
+                android:layout_height="54dp"
                 android:hint="Enter your password"
                 android:inputType="textPassword"
-                android:background="@drawable/input_white"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
+                android:background="@drawable/input_rounded"
+                android:paddingStart="18dp"
+                android:paddingEnd="18dp"
                 android:textColor="#1A1A1A"
-                android:textColorHint="#AAAAAA"
+                android:textColorHint="#BBBBBB"
                 android:textSize="15sp"
                 android:layout_marginBottom="28dp"/>
 
-            <!-- Login Button -->
             <Button
                 android:id="@+id/btnLogin"
                 android:layout_width="match_parent"
-                android:layout_height="54dp"
+                android:layout_height="56dp"
                 android:text="Login"
                 android:textStyle="bold"
                 android:textSize="16sp"
                 android:textColor="#FFFCF2"
                 android:backgroundTint="#1B5E35"
-                android:layout_marginBottom="14dp"/>
+                android:layout_marginBottom="16dp"/>
 
-            <!-- Divider -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:layout_marginBottom="14dp">
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="1dp"
-                    android:layout_weight="1"
-                    android:background="#E0D4B0"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="  or  "
-                    android:textColor="#AAAAAA"
-                    android:textSize="13sp"/>
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="1dp"
-                    android:layout_weight="1"
-                    android:background="#E0D4B0"/>
+                android:layout_marginBottom="16dp">
+                <View android:layout_width="0dp" android:layout_height="1dp"
+                    android:layout_weight="1" android:background="#E0D4B0"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="  or  " android:textColor="#AAAAAA" android:textSize="13sp"/>
+                <View android:layout_width="0dp" android:layout_height="1dp"
+                    android:layout_weight="1" android:background="#E0D4B0"/>
             </LinearLayout>
 
-            <!-- Register Button -->
             <Button
                 android:id="@+id/btnRegister"
                 android:layout_width="match_parent"
@@ -180,6 +161,5 @@
                 android:backgroundTint="#E8D9A8"/>
 
         </LinearLayout>
-
     </LinearLayout>
 </ScrollView>

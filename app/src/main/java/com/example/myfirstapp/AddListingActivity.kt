@@ -9,83 +9,65 @@ import androidx.appcompat.app.AppCompatActivity
 
 class AddListingActivity : AppCompatActivity() {
 
-    private var selectedImageUris = mutableListOf<String>()
+    private val selectedImageUris = mutableListOf<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
         setContentView(R.layout.activity_add_listing)
 
-        val editMake: EditText = findViewById(R.id.editMake)
-        val editModel: EditText = findViewById(R.id.editModel)
-        val editYear: EditText = findViewById(R.id.editYear)
-        val editPrice: EditText = findViewById(R.id.editPrice)
-        val editLocation: EditText = findViewById(R.id.editLocation)
-        val editPhone: EditText = findViewById(R.id.editPhone)
-        val btnPick: Button = findViewById(R.id.btnPickImages)
-        val txtCount: TextView = findViewById(R.id.txtImageCount)
-        val btnSubmit: Button = findViewById(R.id.btnSubmitListing)
-
-        val db = DatabaseHelper(this)
-
+        val db     = DatabaseHelper(this)
         val userId = intent.getIntExtra("USER_ID", -1)
-        val user = db.getUserById(userId)
-        var sellerName = ""
-        if (user != null)
-        {
-            sellerName = user.username
-        }
+        val user   = db.getUserById(userId)
+        val sellerName = user?.username ?: ""
 
+        val editMake   = findViewById<EditText>(R.id.editMake)
+        val editModel  = findViewById<EditText>(R.id.editModel)
+        val editYear   = findViewById<EditText>(R.id.editYear)
+        val editPrice  = findViewById<EditText>(R.id.editPrice)
+        val editLoc    = findViewById<EditText>(R.id.editLocation)
+        val editPhone  = findViewById<EditText>(R.id.editPhone)
+        val editDesc   = findViewById<EditText?>(R.id.editDescription)
+        val txtCount   = findViewById<TextView>(R.id.txtImageCount)
 
-        // The Photo Picker Logic with Persistable Permissions
         val pickMedia = registerForActivityResult(ActivityResultContracts.PickMultipleVisualMedia(5)) { uris ->
             if (uris.isNotEmpty()) {
                 selectedImageUris.clear()
                 uris.forEach { uri ->
-                    try {
-                        // This grants long-term access to the image file
-                        contentResolver.takePersistableUriPermission(
-                            uri,
-                            Intent.FLAG_GRANT_READ_URI_PERMISSION
-                        )
-                    } catch (e: Exception) {
-                        e.printStackTrace()
-                    }
+                    try { contentResolver.takePersistableUriPermission(uri, Intent.FLAG_GRANT_READ_URI_PERMISSION) }
+                    catch (e: Exception) { e.printStackTrace() }
                     selectedImageUris.add(uri.toString())
-
                 }
-                txtCount.text = "${uris.size} images selected"
+                txtCount.text = "${uris.size} photo${if (uris.size != 1) "s" else ""} selected"
             }
         }
 
-        btnPick.setOnClickListener {
+        findViewById<Button>(R.id.btnPickImages).setOnClickListener {
             pickMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
         }
 
-        btnSubmit.setOnClickListener {
-            val make = editMake.text.toString().trim()
+        findViewById<Button>(R.id.btnSubmitListing).setOnClickListener {
+            val make  = editMake.text.toString().trim()
             val model = editModel.text.toString().trim()
-            val year = editYear.text.toString().toIntOrNull() ?: 0
+            val year  = editYear.text.toString().toIntOrNull() ?: 0
             val price = editPrice.text.toString().toDoubleOrNull() ?: 0.0
-            val location = editLocation.text.toString().trim()
+            val loc   = editLoc.text.toString().trim()
             val phone = editPhone.text.toString().trim()
+            val desc  = editDesc?.text.toString().trim() ?: ""
 
-
-            // FIX: Get the actual name passed from DashboardActivity
-
-
-
-            if (make.isNotEmpty() && model.isNotEmpty()) {
-                val result = db.addListing(userId, sellerName, make, model, year, price, location, phone, selectedImageUris)
-
-                if (result != -1L) {
-                    Toast.makeText(this, "Car Posted by $sellerName!", Toast.LENGTH_SHORT).show()
-                    finish()
-                } else {
-                    Toast.makeText(this, "Database Error", Toast.LENGTH_SHORT).show()
+            when {
+                make.isEmpty() || model.isEmpty() -> Toast.makeText(this, "Make and model are required", Toast.LENGTH_SHORT).show()
+                year < 1900 || year > 2100       -> Toast.makeText(this, "Please enter a valid year", Toast.LENGTH_SHORT).show()
+                price <= 0                        -> Toast.makeText(this, "Please enter a valid price", Toast.LENGTH_SHORT).show()
+                else -> {
+                    val result = db.addListing(userId, sellerName, make, model, year, price, loc, phone, desc, selectedImageUris)
+                    if (result != -1L) {
+                        Toast.makeText(this, "Listing posted!", Toast.LENGTH_SHORT).show()
+                        finish()
+                    } else {
+                        Toast.makeText(this, "Something went wrong, try again", Toast.LENGTH_SHORT).show()
+                    }
                 }
-            } else {
-                Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show()
             }
         }
     }

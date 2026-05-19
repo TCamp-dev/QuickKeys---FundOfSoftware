@@ -2,63 +2,38 @@ package com.example.myfirstapp
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.ListView
-import android.widget.TextView
-import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 
-class ViewPurchasesActivity : AppCompatActivity()  {
+class ViewPurchasesActivity : AppCompatActivity() {
+
     private lateinit var db: DatabaseHelper
-    private lateinit var listView: ListView
-    private lateinit var carList: List<CarListing>
+    private var carList: List<CarListing> = emptyList()
+    private var userId = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
         setContentView(R.layout.activity_my_listings)
 
-        db = DatabaseHelper(this)
-        val id = intent.getIntExtra("USER_ID", -1)
-        val user = db.getUserById(id)
-        var username = ""
-        if(user != null)
-        {
-            username = user.username
-        }
+        db     = DatabaseHelper(this)
+        userId = intent.getIntExtra("USER_ID", -1)
 
-        val purchasesText: TextView = findViewById(R.id.txtMyListingsTitle)
-        val tapInfo: TextView = findViewById(R.id.txtTapInfo)
-        purchasesText.text = "My Purchases"
-        tapInfo.text = "Click to view details"
+        findViewById<TextView>(R.id.txtMyListingsTitle).text = "My Purchases"
+        findViewById<TextView>(R.id.txtTapInfo).text = "Tap a car to view details"
 
-        listView = findViewById(R.id.listViewMyCars)
-
-        loadMyListings(id)
+        val listView = findViewById<ListView>(R.id.listViewMyCars)
+        carList = db.getBuyerPurchases(userId)
+        listView.adapter = CarAdapter(this, carList)
 
         listView.setOnItemClickListener { _, _, position, _ ->
-
-            val selectedCar = carList[position]
-
-            val intent = Intent(this, CarDetailsActivity::class.java)
-            intent.putExtra("CAR_ID", selectedCar.id)
-
-            val carInfoString =
-                "${selectedCar.year} ${selectedCar.make} ${selectedCar.model} - $${selectedCar.price}\n" +
-                        "Sold by: ${selectedCar.sellerName}\n" +
-                        "Bought By: $username"
-
-            intent.putExtra("CAR_INFO", carInfoString)
-            intent.putExtra("IS_SELLER_VIEW", true)
-
-            startActivity(intent)
+            val car = carList[position]
+            startActivity(Intent(this, CarDetailsActivity::class.java).apply {
+                putExtra("CAR_ID", car.id)
+                putExtra("USER_ID", userId)
+                putExtra("CAR_INFO", "${car.year} ${car.make} ${car.model} - $${car.price}\nSold by: ${car.sellerName}")
+                putExtra("IS_SELLER_VIEW", true)
+            })
         }
-
-    }
-
-    private fun loadMyListings(id: Int) {
-        carList = db.getBuyerPurchases(id)
-        val adapter = CarAdapter(this, carList)
-        listView.adapter = adapter
     }
 }

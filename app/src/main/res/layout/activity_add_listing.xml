@@ -9,257 +9,117 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Green Header -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:background="@drawable/bg_header_green"
-            android:paddingStart="24dp"
-            android:paddingEnd="24dp"
-            android:paddingTop="48dp"
-            android:paddingBottom="28dp">
+            android:paddingStart="24dp" android:paddingEnd="24dp"
+            android:paddingTop="48dp" android:paddingBottom="28dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="🔑 Quick Keys"
-                android:textSize="13sp"
-                android:textStyle="bold"
-                android:textColor="#F0DFA0"
-                android:fontFamily="serif"
-                android:layout_marginBottom="8dp"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="🔑 Quick Keys" android:textSize="13sp" android:textStyle="bold"
+                android:textColor="#F0DFA0" android:fontFamily="serif" android:layout_marginBottom="8dp"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Post a New Car"
-                android:textSize="28sp"
-                android:textStyle="bold"
-                android:textColor="#FFFCF2"
-                android:fontFamily="serif"/>
-
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Post a New Car" android:textSize="28sp" android:textStyle="bold"
+                android:textColor="#FFFCF2" android:fontFamily="serif"/>
         </LinearLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="4dp"
-            android:background="#C8973A"/>
+        <View android:layout_width="match_parent" android:layout_height="4dp" android:background="#C8973A"/>
 
-        <!-- Form body -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="24dp">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:padding="24dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="VEHICLE DETAILS"
-                android:textSize="11sp"
-                android:textStyle="bold"
-                android:letterSpacing="0.12"
-                android:textColor="#C8973A"
-                android:layout_marginBottom="16dp"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="VEHICLE DETAILS" android:textSize="11sp" android:textStyle="bold"
+                android:letterSpacing="0.12" android:textColor="#C8973A" android:layout_marginBottom="16dp"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Make"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                android:textColor="#1B5E35"
-                android:layout_marginBottom="6dp"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Make" android:textSize="12sp" android:textStyle="bold"
+                android:textColor="#1B5E35" android:layout_marginBottom="6dp"/>
+            <EditText android:id="@+id/editMake" android:layout_width="match_parent"
+                android:layout_height="52dp" android:hint="e.g. Toyota" android:inputType="textCapWords"
+                android:background="@drawable/input_white" android:paddingStart="16dp" android:paddingEnd="16dp"
+                android:textColor="#1A1A1A" android:textColorHint="#AAAAAA" android:layout_marginBottom="16dp"/>
 
-            <EditText
-                android:id="@+id/editMake"
-                android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:hint="e.g. Toyota"
-                android:inputType="textCapWords"
-                android:background="@drawable/input_white"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:textColor="#1A1A1A"
-                android:textColorHint="#AAAAAA"
-                android:layout_marginBottom="16dp"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Model" android:textSize="12sp" android:textStyle="bold"
+                android:textColor="#1B5E35" android:layout_marginBottom="6dp"/>
+            <EditText android:id="@+id/editModel" android:layout_width="match_parent"
+                android:layout_height="52dp" android:hint="e.g. Camry" android:inputType="textCapWords"
+                android:background="@drawable/input_white" android:paddingStart="16dp" android:paddingEnd="16dp"
+                android:textColor="#1A1A1A" android:textColorHint="#AAAAAA" android:layout_marginBottom="16dp"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Model"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                android:textColor="#1B5E35"
-                android:layout_marginBottom="6dp"/>
-
-            <EditText
-                android:id="@+id/editModel"
-                android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:hint="e.g. Camry"
-                android:inputType="textCapWords"
-                android:background="@drawable/input_white"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:textColor="#1A1A1A"
-                android:textColorHint="#AAAAAA"
-                android:layout_marginBottom="16dp"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="24dp">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginEnd="10dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Year"
-                        android:textSize="12sp"
-                        android:textStyle="bold"
-                        android:textColor="#1B5E35"
-                        android:layout_marginBottom="6dp"/>
-
-                    <EditText
-                        android:id="@+id/editYear"
-                        android:layout_width="match_parent"
-                        android:layout_height="52dp"
-                        android:hint="2024"
-                        android:inputType="number"
-                        android:background="@drawable/input_white"
-                        android:paddingStart="16dp"
-                        android:paddingEnd="16dp"
-                        android:textColor="#1A1A1A"
-                        android:textColorHint="#AAAAAA"/>
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="horizontal" android:layout_marginBottom="16dp">
+                <LinearLayout android:layout_width="0dp" android:layout_weight="1"
+                    android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginEnd="10dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Year" android:textSize="12sp" android:textStyle="bold"
+                        android:textColor="#1B5E35" android:layout_marginBottom="6dp"/>
+                    <EditText android:id="@+id/editYear" android:layout_width="match_parent"
+                        android:layout_height="52dp" android:hint="2024" android:inputType="number"
+                        android:background="@drawable/input_white" android:paddingStart="16dp"
+                        android:paddingEnd="16dp" android:textColor="#1A1A1A" android:textColorHint="#AAAAAA"/>
                 </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Price ($)"
-                        android:textSize="12sp"
-                        android:textStyle="bold"
-                        android:textColor="#1B5E35"
-                        android:layout_marginBottom="6dp"/>
-
-                    <EditText
-                        android:id="@+id/editPrice"
-                        android:layout_width="match_parent"
-                        android:layout_height="52dp"
-                        android:hint="25000"
-                        android:inputType="numberDecimal"
-                        android:background="@drawable/input_white"
-                        android:paddingStart="16dp"
-                        android:paddingEnd="16dp"
-                        android:textColor="#1A1A1A"
-                        android:textColorHint="#AAAAAA"/>
+                <LinearLayout android:layout_width="0dp" android:layout_weight="1"
+                    android:layout_height="wrap_content" android:orientation="vertical">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Price ($)" android:textSize="12sp" android:textStyle="bold"
+                        android:textColor="#1B5E35" android:layout_marginBottom="6dp"/>
+                    <EditText android:id="@+id/editPrice" android:layout_width="match_parent"
+                        android:layout_height="52dp" android:hint="25000" android:inputType="numberDecimal"
+                        android:background="@drawable/input_white" android:paddingStart="16dp"
+                        android:paddingEnd="16dp" android:textColor="#1A1A1A" android:textColorHint="#AAAAAA"/>
                 </LinearLayout>
             </LinearLayout>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Pickup Location"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                android:textColor="#1B5E35"
-                android:layout_marginBottom="6dp"/>
 
-            <EditText
-                android:id="@+id/editLocation"
-                android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:hint="e.g. Arlington, TX"
-                android:inputType="textCapWords"
-                android:background="@drawable/input_white"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:textColor="#1A1A1A"
-                android:textColorHint="#AAAAAA"
-                android:layout_marginBottom="16dp"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Location" android:textSize="12sp" android:textStyle="bold"
+                android:textColor="#1B5E35" android:layout_marginBottom="6dp"/>
+            <EditText android:id="@+id/editLocation" android:layout_width="match_parent"
+                android:layout_height="52dp" android:hint="City, State" android:inputType="textCapWords"
+                android:background="@drawable/input_white" android:paddingStart="16dp" android:paddingEnd="16dp"
+                android:textColor="#1A1A1A" android:textColorHint="#AAAAAA" android:layout_marginBottom="16dp"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Contact Number"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                android:textColor="#1B5E35"
-                android:layout_marginBottom="6dp"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Contact Phone" android:textSize="12sp" android:textStyle="bold"
+                android:textColor="#1B5E35" android:layout_marginBottom="6dp"/>
+            <EditText android:id="@+id/editPhone" android:layout_width="match_parent"
+                android:layout_height="52dp" android:hint="e.g. 555-123-4567" android:inputType="phone"
+                android:background="@drawable/input_white" android:paddingStart="16dp" android:paddingEnd="16dp"
+                android:textColor="#1A1A1A" android:textColorHint="#AAAAAA" android:layout_marginBottom="16dp"/>
 
-            <EditText
-                android:id="@+id/editPhone"
-                android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:hint="e.g. 817-555-0123"
-                android:inputType="phone"
-                android:background="@drawable/input_white"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:textColor="#1A1A1A"
-                android:textColorHint="#AAAAAA"
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Description (optional)" android:textSize="12sp" android:textStyle="bold"
+                android:textColor="#1B5E35" android:layout_marginBottom="6dp"/>
+            <EditText android:id="@+id/editDescription" android:layout_width="match_parent"
+                android:layout_height="100dp" android:hint="Condition, mileage, features..."
+                android:inputType="textMultiLine" android:gravity="top"
+                android:background="@drawable/input_white" android:paddingStart="16dp" android:paddingEnd="16dp"
+                android:paddingTop="12dp" android:textColor="#1A1A1A" android:textColorHint="#AAAAAA"
                 android:layout_marginBottom="24dp"/>
 
-            <!-- Photos section -->
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#E8D9A8"
-                android:layout_marginBottom="20dp"/>
+            <View android:layout_width="match_parent" android:layout_height="1dp"
+                android:background="#E8D9A8" android:layout_marginBottom="20dp"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="PHOTOS"
-                android:textSize="11sp"
-                android:textStyle="bold"
-                android:letterSpacing="0.12"
-                android:textColor="#C8973A"
-                android:layout_marginBottom="12dp"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="PHOTOS" android:textSize="11sp" android:textStyle="bold"
+                android:letterSpacing="0.12" android:textColor="#C8973A" android:layout_marginBottom="12dp"/>
 
-            <Button
-                android:id="@+id/btnPickImages"
-                android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:text="📷  Select Car Photos"
-                android:textSize="14sp"
-                android:textColor="#1B5E35"
-                android:textStyle="bold"
-                android:backgroundTint="#E8D9A8"
-                android:layout_marginBottom="10dp"/>
+            <Button android:id="@+id/btnPickImages" android:layout_width="match_parent"
+                android:layout_height="52dp" android:text="📷  Select Car Photos"
+                android:textSize="14sp" android:textColor="#1B5E35" android:textStyle="bold"
+                android:backgroundTint="#E8D9A8" android:layout_marginBottom="10dp"/>
 
-            <TextView
-                android:id="@+id/txtImageCount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0 images selected"
-                android:textColor="#9AAA90"
-                android:textSize="13sp"
-                android:layout_marginBottom="28dp"/>
+            <TextView android:id="@+id/txtImageCount" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:text="0 photos selected"
+                android:textColor="#9AAA90" android:textSize="13sp" android:layout_marginBottom="28dp"/>
 
-            <Button
-                android:id="@+id/btnSubmitListing"
-                android:layout_width="match_parent"
-                android:layout_height="58dp"
-                android:text="Post Listing"
-                android:textStyle="bold"
-                android:textSize="16sp"
-                android:textColor="#FFFCF2"
-                android:backgroundTint="#1B5E35"/>
+            <Button android:id="@+id/btnSubmitListing" android:layout_width="match_parent"
+                android:layout_height="58dp" android:text="Post Listing" android:textStyle="bold"
+                android:textSize="16sp" android:textColor="#FFFCF2" android:backgroundTint="#1B5E35"/>
 
         </LinearLayout>
     </LinearLayout>

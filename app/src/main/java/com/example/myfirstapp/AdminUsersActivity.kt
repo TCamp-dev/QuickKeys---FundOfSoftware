@@ -1,9 +1,7 @@
 package com.example.myfirstapp
 
 import android.os.Bundle
-import android.widget.ArrayAdapter
-import android.widget.ListView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 
@@ -19,35 +17,25 @@ class AdminUsersActivity : AppCompatActivity() {
 
         db = DatabaseHelper(this)
         listView = findViewById(R.id.listViewAllUsers)
-
-        loadUsers()
+        load()
 
         listView.setOnItemLongClickListener { _, _, position, _ ->
-            val userList = db.getAllUsers()
-            val selectedUser = userList[position]
-
+            val user = db.getAllUsers()[position]
             AlertDialog.Builder(this)
                 .setTitle("Delete User")
-                .setMessage("Are you sure you want to completely delete the user '${selectedUser.username}'?")
+                .setMessage("Permanently delete '${user.username}'?")
                 .setPositiveButton("Delete") { _, _ ->
-                    db.deleteUser(selectedUser.id)
+                    db.deleteUser(user.id)
                     Toast.makeText(this, "User deleted", Toast.LENGTH_SHORT).show()
-                    loadUsers() // Refresh list
+                    load()
                 }
-                .setNegativeButton("Cancel", null)
-                .show()
-
+                .setNegativeButton("Cancel", null).show()
             true
         }
     }
 
-    private fun loadUsers() {
-        val userList = db.getAllUsers()
-        // Format the output string for the simple list
-        val displayStrings = userList.map { "Username: ${it.username}\nRole: ${it.role}" }
-
-        // We use Android's built-in simple list layout here to save you from making another XML file
-        val adapter = ArrayAdapter(this, R.layout.list_item_user, displayStrings)
-        listView.adapter = adapter
+    private fun load() {
+        val items = db.getAllUsers().map { "👤  ${it.username}   |   ${it.role}" }
+        listView.adapter = ArrayAdapter(this, R.layout.list_item_user, items)
     }
 }

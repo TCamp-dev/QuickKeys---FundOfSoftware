@@ -2,8 +2,7 @@ package com.example.myfirstapp
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import android.widget.TextView
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 
 class ReceiptActivity : AppCompatActivity() {
@@ -13,23 +12,18 @@ class ReceiptActivity : AppCompatActivity() {
         supportActionBar?.hide()
         setContentView(R.layout.activity_receipt)
 
-        val txtOrderNum: TextView = findViewById(R.id.txtOrderNumber)
-        val txtCarInfo: TextView = findViewById(R.id.txtReceiptCarInfo)
-        val txtLocation: TextView = findViewById(R.id.txtPickupLocation)
-        val txtPhone: TextView = findViewById(R.id.txtContactPhone)
-        val btnDone: Button = findViewById(R.id.btnBackToDashboard)
+        val userId = intent.getIntExtra("USER_ID", -1)
 
-        // Retrieve the data passed from PaymentActivity
-        txtOrderNum.text = "Order #" + (intent.getStringExtra("ORDER_NUMBER") ?: "000000")
-        txtCarInfo.text = intent.getStringExtra("CAR_INFO")
-        txtLocation.text = intent.getStringExtra("LOCATION")
-        txtPhone.text = intent.getStringExtra("PHONE")
+        findViewById<TextView>(R.id.txtOrderNumber).text   = "Order #${intent.getStringExtra("ORDER_NUMBER") ?: "------"}"
+        findViewById<TextView>(R.id.txtReceiptCarInfo).text = intent.getStringExtra("CAR_INFO") ?: ""
+        findViewById<TextView>(R.id.txtPickupLocation).text = intent.getStringExtra("LOCATION") ?: ""
+        findViewById<TextView>(R.id.txtContactPhone).text   = intent.getStringExtra("PHONE") ?: ""
 
-        btnDone.setOnClickListener {
-            // Return to the Dashboard and clear history
-            val intent = Intent(this, DashboardActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
-            startActivity(intent)
+        findViewById<Button>(R.id.btnBackToDashboard).setOnClickListener {
+            startActivity(Intent(this, DashboardActivity::class.java).apply {
+                flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+                putExtra("USER_ID", userId)
+            })
             finish()
         }
     }
