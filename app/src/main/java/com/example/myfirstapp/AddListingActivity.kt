@@ -1,15 +1,32 @@
 package com.example.myfirstapp
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.widget.*
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import java.io.File
+import java.io.FileOutputStream
 
 class AddListingActivity : AppCompatActivity() {
 
     private val selectedImageUris = mutableListOf<String>()
+
+    private fun saveImageToInternalStorage(uri: Uri): String {
+        val inputStream = contentResolver.openInputStream(uri)
+        val fileName = "car_${System.currentTimeMillis()}.jpg"
+        val file = File(filesDir, fileName)
+
+        val outputStream = FileOutputStream(file)
+        inputStream?.copyTo(outputStream)
+
+        inputStream?.close()
+        outputStream.close()
+
+        return file.absolutePath
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

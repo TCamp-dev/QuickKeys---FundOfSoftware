@@ -9,6 +9,7 @@ class AdminListingsActivity : AppCompatActivity() {
 
     private lateinit var db: DatabaseHelper
     private lateinit var listView: ListView
+    private var carList: List<CarListing> = emptyList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,6 +22,10 @@ class AdminListingsActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.txtTapInfo).text = "Hold a listing to delete it"
 
         load()
+
+        if (carList.isEmpty()) {
+            Toast.makeText(this, "No listings available", Toast.LENGTH_SHORT).show()
+        }
 
         listView.setOnItemLongClickListener { _, _, position, _ ->
             val car = db.getAllListings()[position]

@@ -23,7 +23,8 @@ data class CarListing(
 data class UserProfile(
     val id: Int,
     val username: String,
-    val role: String
+    val role: String,
+    val profileImage: String? = null
 )
 
 class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, "QuickKeys.db", null, 6) {

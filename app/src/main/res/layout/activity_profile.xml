@@ -211,7 +211,7 @@
                         android:layout_marginBottom="2dp"/>
 
                     <TextView
-                        android:id="@+id/txtProfileAddress"
+                        android:id="@+id/btnProfileAddress"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Not set"
@@ -263,7 +263,7 @@
                         android:layout_marginBottom="2dp"/>
 
                     <TextView
-                        android:id="@+id/txtProfileEmail"
+                        android:id="@+id/btnProfileEmail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Not set"
@@ -378,6 +378,7 @@
 
             </LinearLayout>
 
+        -->
         </LinearLayout>
 
         <!-- SETTINGS -->

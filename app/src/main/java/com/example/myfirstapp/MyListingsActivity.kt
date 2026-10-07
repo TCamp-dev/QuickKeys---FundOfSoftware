@@ -21,7 +21,7 @@ class MyListingsActivity : AppCompatActivity() {
         userId = intent.getIntExtra("USER_ID", -1)
         listView = findViewById(R.id.listViewMyCars)
 
-        loadMyListings()
+        loadMyListings(userId)
 
         listView.setOnItemClickListener { _, _, position, _ ->
             val car = db.getListingsBySeller(userId)[position]
@@ -41,7 +41,7 @@ class MyListingsActivity : AppCompatActivity() {
                 .setPositiveButton("Delete") { _, _ ->
                     db.deleteListing(car.id)
                     Toast.makeText(this, "Listing deleted", Toast.LENGTH_SHORT).show()
-                    loadMyListings()
+                    loadMyListings(userId)
                 }
                 .setNegativeButton("Cancel", null).show()
             true
