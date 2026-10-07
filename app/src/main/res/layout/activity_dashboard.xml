@@ -2,227 +2,125 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFCF2">
+    android:background="#F7F3E8">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Green Header -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@drawable/bg_header_green"
-            android:paddingStart="24dp"
-            android:paddingEnd="24dp"
-            android:paddingTop="48dp"
-            android:paddingBottom="32dp">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:background="@drawable/bg_header_green"
+            android:paddingStart="24dp" android:paddingEnd="24dp"
+            android:paddingTop="52dp" android:paddingBottom="32dp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:layout_marginBottom="14dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="horizontal" android:gravity="center_vertical"
+                android:layout_marginBottom="16dp">
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:text="🔑 Quick Keys"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:textColor="#F0DFA0"
-                    android:fontFamily="serif"/>
+                <TextView android:layout_width="0dp" android:layout_weight="1"
+                    android:layout_height="wrap_content" android:text="🔑 Quick Keys"
+                    android:textSize="16sp" android:textStyle="bold"
+                    android:textColor="#F0DFA0" android:fontFamily="serif"/>
 
-                <!-- Profile Icon Button -->
-                <Button
-                    android:id="@+id/btnProfileIcon"
-                    android:layout_width="44dp"
-                    android:layout_height="44dp"
-                    android:text="👤"
-                    android:textSize="22sp"
-                    android:gravity="center"
-                    android:background="@drawable/circle_gold_border"/>
+                <!-- IMPORTANT: Must be ImageView so ProfileManager.loadInto() can set the photo -->
+                <ImageView android:id="@+id/btnProfileIcon"
+                    android:layout_width="48dp" android:layout_height="48dp"
+                    android:src="@android:drawable/ic_menu_myplaces"
+                    android:background="@drawable/circle_gold_border"
+                    android:scaleType="centerCrop" android:padding="2dp"/>
 
             </LinearLayout>
 
-            <!-- Profile Icon Button -->
-
-            <TextView
-                android:id="@+id/txtWelcome"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Welcome back!"
-                android:textSize="28sp"
-                android:textStyle="bold"
-                android:textColor="#FFFCF2"
-                android:fontFamily="serif"
+            <TextView android:id="@+id/txtWelcome" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:text="Welcome back!"
+                android:textSize="30sp" android:textStyle="bold"
+                android:textColor="#FFFCF2" android:fontFamily="serif"
                 android:layout_marginBottom="6dp"/>
 
-            <TextView
-                android:id="@+id/txtRoleDisplay"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Account: User"
-                android:textSize="14sp"
-                android:textColor="#A8C4A0"/>
+            <TextView android:id="@+id/txtRoleDisplay" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:text="Account: User"
+                android:textSize="14sp" android:textColor="#A8C4A0"/>
 
         </LinearLayout>
 
-        <!-- Gold accent bar -->
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="4dp"
-            android:background="#C8973A"/>
+        <View android:layout_width="match_parent" android:layout_height="4dp" android:background="#C8973A"/>
 
-        <!-- Mode Toggle -->
-        <RadioGroup
-            android:id="@+id/toggleMode"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:background="#F5EDD6"
-            android:padding="10dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginTop="24dp"
-            android:visibility="gone">
+        <RadioGroup android:id="@+id/toggleMode" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:orientation="horizontal"
+            android:background="#EDE6D0" android:padding="12dp"
+            android:layout_marginStart="20dp" android:layout_marginEnd="20dp"
+            android:layout_marginTop="24dp" android:visibility="gone">
 
-            <RadioButton
-                android:id="@+id/radioBuyer"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="44dp"
-                android:text="🔍  Buyer"
-                android:textStyle="bold"
-                android:textColor="#1B5E35"
-                android:buttonTint="#1B5E35"
-                android:checked="true"/>
+            <RadioButton android:id="@+id/radioBuyer" android:layout_width="0dp"
+                android:layout_weight="1" android:layout_height="46dp"
+                android:text="🔍  Buyer" android:textStyle="bold"
+                android:textColor="#1B5E35" android:buttonTint="#1B5E35" android:checked="true"/>
 
-            <RadioButton
-                android:id="@+id/radioSeller"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="44dp"
-                android:text="🚗  Seller"
-                android:textStyle="bold"
-                android:textColor="#1B5E35"
-                android:buttonTint="#1B5E35"/>
+            <RadioButton android:id="@+id/radioSeller" android:layout_width="0dp"
+                android:layout_weight="1" android:layout_height="46dp"
+                android:text="🚗  Seller" android:textStyle="bold"
+                android:textColor="#1B5E35" android:buttonTint="#1B5E35"/>
 
         </RadioGroup>
 
-        <!-- Buyer Layout -->
-        <LinearLayout
-            android:id="@+id/layoutBuyer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="24dp"
-            android:visibility="gone">
+        <LinearLayout android:id="@+id/layoutBuyer" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:orientation="vertical"
+            android:paddingStart="20dp" android:paddingEnd="20dp"
+            android:paddingTop="24dp" android:paddingBottom="8dp" android:visibility="gone">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="What are you looking for?"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="#0F3520"
-                android:fontFamily="serif"
-                android:layout_marginBottom="16dp"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Ready to find your car?" android:textSize="20sp"
+                android:textStyle="bold" android:textColor="#0F3520"
+                android:fontFamily="serif" android:layout_marginBottom="16dp"/>
 
-            <Button
-                android:id="@+id/btnBrowseCars"
-                android:layout_width="match_parent"
-                android:layout_height="58dp"
-                android:text="Browse All Listings"
-                android:textStyle="bold"
-                android:textSize="15sp"
-                android:textColor="#FFFCF2"
-                android:backgroundTint="#1B5E35"/>
+            <Button android:id="@+id/btnBrowseCars" android:layout_width="match_parent"
+                android:layout_height="60dp" android:text="Browse All Listings"
+                android:textStyle="bold" android:textSize="16sp"
+                android:textColor="#FFFCF2" android:backgroundTint="#1B5E35"/>
 
         </LinearLayout>
 
-        <!-- Seller Layout -->
-        <LinearLayout
-            android:id="@+id/layoutSeller"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="24dp"
-            android:visibility="gone">
+        <LinearLayout android:id="@+id/layoutSeller" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:orientation="vertical"
+            android:paddingStart="20dp" android:paddingEnd="20dp"
+            android:paddingTop="24dp" android:paddingBottom="8dp" android:visibility="gone">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Seller Tools"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="#0F3520"
-                android:fontFamily="serif"
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Seller Tools" android:textSize="20sp" android:textStyle="bold"
+                android:textColor="#0F3520" android:fontFamily="serif"
                 android:layout_marginBottom="16dp"/>
 
-            <Button
-                android:id="@+id/btnPostCar"
-                android:layout_width="match_parent"
-                android:layout_height="58dp"
-                android:text="Post a Car for Sale"
-                android:textStyle="bold"
-                android:textSize="15sp"
-                android:textColor="#FFFCF2"
-                android:backgroundTint="#1B5E35"
+            <Button android:id="@+id/btnPostCar" android:layout_width="match_parent"
+                android:layout_height="60dp" android:text="Post a Car for Sale"
+                android:textStyle="bold" android:textSize="16sp"
+                android:textColor="#FFFCF2" android:backgroundTint="#1B5E35"
                 android:layout_marginBottom="12dp"/>
 
-            <Button
-                android:id="@+id/btnManageListings"
-                android:layout_width="match_parent"
-                android:layout_height="54dp"
-                android:text="Manage My Listings"
-                android:textSize="14sp"
-                android:textColor="#1B5E35"
+            <Button android:id="@+id/btnManageListings" android:layout_width="match_parent"
+                android:layout_height="54dp" android:text="Manage My Listings"
+                android:textSize="15sp" android:textColor="#1B5E35"
                 android:backgroundTint="#E8D9A8"/>
 
         </LinearLayout>
 
-        <!-- Admin Layout -->
-        <LinearLayout
-            android:id="@+id/layoutAdmin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="24dp"
-            android:visibility="gone">
+        <LinearLayout android:id="@+id/layoutAdmin" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:orientation="vertical"
+            android:paddingStart="20dp" android:paddingEnd="20dp"
+            android:paddingTop="24dp" android:paddingBottom="8dp" android:visibility="gone">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Admin Controls"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="#0F3520"
-                android:fontFamily="serif"
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Admin Controls" android:textSize="20sp" android:textStyle="bold"
+                android:textColor="#0F3520" android:fontFamily="serif"
                 android:layout_marginBottom="16dp"/>
 
-            <Button
-                android:id="@+id/btnAdminUsers"
-                android:layout_width="match_parent"
-                android:layout_height="58dp"
-                android:text="Manage All Users"
-                android:textStyle="bold"
-                android:textSize="15sp"
-                android:textColor="#FFFCF2"
-                android:backgroundTint="#7B2D2D"
+            <Button android:id="@+id/btnAdminUsers" android:layout_width="match_parent"
+                android:layout_height="60dp" android:text="Manage All Users"
+                android:textStyle="bold" android:textSize="16sp"
+                android:textColor="#FFFCF2" android:backgroundTint="#7B2D2D"
                 android:layout_marginBottom="12dp"/>
 
-            <Button
-                android:id="@+id/btnAdminListings"
-                android:layout_width="match_parent"
-                android:layout_height="54dp"
-                android:text="Moderate Listings"
-                android:textSize="14sp"
-                android:textColor="#7B2D2D"
+            <Button android:id="@+id/btnAdminListings" android:layout_width="match_parent"
+                android:layout_height="54dp" android:text="Moderate Listings"
+                android:textSize="15sp" android:textColor="#7B2D2D"
                 android:backgroundTint="#F5DDD0"/>
 
         </LinearLayout>

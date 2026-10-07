@@ -1,227 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#FFFCF2">
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="#F7F3E8">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Green Header -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@drawable/bg_header_green"
-            android:paddingStart="24dp"
-            android:paddingEnd="24dp"
-            android:paddingTop="48dp"
-            android:paddingBottom="28dp">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:background="@drawable/bg_header_green"
+            android:paddingStart="24dp" android:paddingEnd="24dp"
+            android:paddingTop="52dp" android:paddingBottom="28dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="🔑 Quick Keys"
-                android:textSize="13sp"
-                android:textStyle="bold"
-                android:textColor="#F0DFA0"
-                android:fontFamily="serif"
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="🔑 Quick Keys" android:textSize="13sp" android:textStyle="bold"
+                android:textColor="#F0DFA0" android:fontFamily="serif"
                 android:layout_marginBottom="8dp"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Checkout"
-                android:textSize="28sp"
-                android:textStyle="bold"
-                android:textColor="#FFFCF2"
-                android:fontFamily="serif"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Checkout" android:textSize="28sp" android:textStyle="bold"
+                android:textColor="#FFFCF2" android:fontFamily="serif"/>
 
         </LinearLayout>
 
-        <!-- Gold accent bar -->
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="4dp"
-            android:background="#C8973A"/>
+        <View android:layout_width="match_parent" android:layout_height="4dp" android:background="#C8973A"/>
 
-        <!-- Form Body -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="24dp">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:padding="24dp">
 
-            <!-- Order Summary -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="ORDER SUMMARY"
-                android:textSize="11sp"
-                android:textStyle="bold"
-                android:letterSpacing="0.12"
-                android:textColor="#C8973A"
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="ORDER SUMMARY" android:textSize="11sp" android:textStyle="bold"
+                android:letterSpacing="0.12" android:textColor="#C8973A"
                 android:layout_marginBottom="12dp"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@drawable/card_green"
-                android:padding="20dp"
-                android:layout_marginBottom="28dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:background="@drawable/card_green"
+                android:padding="20dp" android:layout_marginBottom="28dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="YOUR VEHICLE"
-                    android:textSize="11sp"
-                    android:textStyle="bold"
-                    android:letterSpacing="0.1"
-                    android:textColor="#A8C4A0"
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="YOUR VEHICLE" android:textSize="11sp" android:textStyle="bold"
+                    android:letterSpacing="0.1" android:textColor="#A8C4A0"
                     android:layout_marginBottom="8dp"/>
 
-                <TextView
-                    android:id="@+id/txtCheckoutSummary"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Car Name — Price"
-                    android:textSize="17sp"
-                    android:textStyle="bold"
-                    android:textColor="#F0DFA0"
-                    android:fontFamily="serif"
+                <TextView android:id="@+id/txtCheckoutSummary"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:textSize="17sp" android:textStyle="bold"
+                    android:textColor="#F0DFA0" android:fontFamily="serif"
                     android:lineSpacingMultiplier="1.4"/>
 
             </LinearLayout>
 
-            <!-- Divider -->
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#E8D9A8"
-                android:layout_marginBottom="24dp"/>
+            <View android:layout_width="match_parent" android:layout_height="1dp"
+                android:background="#E0D4B0" android:layout_marginBottom="24dp"/>
 
-            <!-- Payment Details -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="PAYMENT DETAILS"
-                android:textSize="11sp"
-                android:textStyle="bold"
-                android:letterSpacing="0.12"
-                android:textColor="#C8973A"
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="PAYMENT DETAILS" android:textSize="11sp" android:textStyle="bold"
+                android:letterSpacing="0.12" android:textColor="#C8973A"
                 android:layout_marginBottom="16dp"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Card Number"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                android:textColor="#1B5E35"
-                android:layout_marginBottom="6dp"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Card Number" android:textSize="12sp" android:textStyle="bold"
+                android:textColor="#1B5E35" android:layout_marginBottom="6dp"/>
 
-            <EditText
-                android:id="@+id/editCardNumber"
-                android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:hint="1234 5678 9012 3456"
-                android:inputType="number"
-                android:maxLength="16"
-                android:background="@drawable/input_white"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:textColor="#1A1A1A"
-                android:textColorHint="#AAAAAA"
-                android:textSize="15sp"
+            <EditText android:id="@+id/editCardNumber"
+                android:layout_width="match_parent" android:layout_height="54dp"
+                android:hint="1234 5678 9012 3456" android:inputType="number" android:maxLength="16"
+                android:background="@drawable/input_rounded" android:paddingStart="18dp"
+                android:paddingEnd="18dp" android:textColor="#1A1A1A"
+                android:textColorHint="#BBBBBB" android:textSize="15sp"
                 android:layout_marginBottom="16dp"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="32dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="horizontal" android:layout_marginBottom="32dp">
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
+                <LinearLayout android:layout_width="0dp" android:layout_weight="1"
+                    android:layout_height="wrap_content" android:orientation="vertical"
                     android:layout_marginEnd="10dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Expiry Date"
-                        android:textSize="12sp"
-                        android:textStyle="bold"
-                        android:textColor="#1B5E35"
-                        android:layout_marginBottom="6dp"/>
-
-                    <EditText
-                        android:id="@+id/editExpiry"
-                        android:layout_width="match_parent"
-                        android:layout_height="52dp"
-                        android:hint="MM/YY"
-                        android:maxLength="5"
-                        android:background="@drawable/input_white"
-                        android:paddingStart="16dp"
-                        android:paddingEnd="16dp"
-                        android:textColor="#1A1A1A"
-                        android:textColorHint="#AAAAAA"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Expiry" android:textSize="12sp" android:textStyle="bold"
+                        android:textColor="#1B5E35" android:layout_marginBottom="6dp"/>
+                    <EditText android:id="@+id/editExpiry"
+                        android:layout_width="match_parent" android:layout_height="54dp"
+                        android:hint="MM/YY" android:maxLength="5"
+                        android:background="@drawable/input_rounded"
+                        android:paddingStart="18dp" android:paddingEnd="18dp"
+                        android:textColor="#1A1A1A" android:textColorHint="#BBBBBB"/>
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="CVV"
-                        android:textSize="12sp"
-                        android:textStyle="bold"
-                        android:textColor="#1B5E35"
-                        android:layout_marginBottom="6dp"/>
-
-                    <EditText
-                        android:id="@+id/editCvv"
-                        android:layout_width="match_parent"
-                        android:layout_height="52dp"
-                        android:hint="•••"
-                        android:inputType="numberPassword"
-                        android:maxLength="3"
-                        android:background="@drawable/input_white"
-                        android:paddingStart="16dp"
-                        android:paddingEnd="16dp"
-                        android:textColor="#1A1A1A"
-                        android:textColorHint="#AAAAAA"/>
+                <LinearLayout android:layout_width="0dp" android:layout_weight="1"
+                    android:layout_height="wrap_content" android:orientation="vertical">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="CVV" android:textSize="12sp" android:textStyle="bold"
+                        android:textColor="#1B5E35" android:layout_marginBottom="6dp"/>
+                    <EditText android:id="@+id/editCvv"
+                        android:layout_width="match_parent" android:layout_height="54dp"
+                        android:hint="•••" android:inputType="numberPassword" android:maxLength="3"
+                        android:background="@drawable/input_rounded"
+                        android:paddingStart="18dp" android:paddingEnd="18dp"
+                        android:textColor="#1A1A1A" android:textColorHint="#BBBBBB"/>
                 </LinearLayout>
 
             </LinearLayout>
 
-            <!-- Security note -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="🔒  Your payment is secure and encrypted"
-                android:textSize="12sp"
-                android:textColor="#9AAA90"
-                android:gravity="center"
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:text="🔒  Your payment is secure" android:textSize="12sp"
+                android:textColor="#9AAA90" android:gravity="center"
                 android:layout_marginBottom="16dp"/>
 
-            <Button
-                android:id="@+id/btnConfirmPayment"
-                android:layout_width="match_parent"
-                android:layout_height="58dp"
-                android:text="Confirm Payment"
-                android:textStyle="bold"
-                android:textSize="16sp"
-                android:textColor="#FFFCF2"
+            <Button android:id="@+id/btnConfirmPayment"
+                android:layout_width="match_parent" android:layout_height="60dp"
+                android:text="Confirm Payment" android:textStyle="bold"
+                android:textSize="16sp" android:textColor="#FFFCF2"
                 android:backgroundTint="#1B5E35"/>
 
         </LinearLayout>

@@ -1,9 +1,7 @@
 package com.example.myfirstapp
 
 import android.os.Bundle
-import android.widget.ListView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 
@@ -15,46 +13,36 @@ class AdminListingsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // We are reusing the layout you already made!
         supportActionBar?.hide()
         setContentView(R.layout.activity_my_listings)
 
         db = DatabaseHelper(this)
         listView = findViewById(R.id.listViewMyCars)
+        findViewById<TextView>(R.id.txtMyListingsTitle).text = "All Listings"
+        findViewById<TextView>(R.id.txtTapInfo).text = "Hold a listing to delete it"
 
-        // Change the title dynamically so it says Admin
-        val titleText: TextView = findViewById(R.id.txtMyListingsTitle)
-        titleText.text = "Admin: Global Listings Control"
-
-        loadAllListings()
+        load()
 
         if (carList.isEmpty()) {
             Toast.makeText(this, "No listings available", Toast.LENGTH_SHORT).show()
         }
 
         listView.setOnItemLongClickListener { _, _, position, _ ->
-
-            val selectedCar = carList[position]   // SAFE
-
-
+            val car = db.getAllListings()[position]
             AlertDialog.Builder(this)
-                .setTitle("Admin Override: Delete Listing")
-                .setMessage("Delete ${selectedCar.year} ${selectedCar.make} posted by ${selectedCar.sellerName}?")
+                .setTitle("Delete Listing")
+                .setMessage("Delete ${car.year} ${car.make} ${car.model} by ${car.sellerName}?")
                 .setPositiveButton("Delete") { _, _ ->
-                    db.deleteListing(selectedCar.id)
-                    Toast.makeText(this, "Listing removed from platform.", Toast.LENGTH_SHORT).show()
-                    loadAllListings()
+                    db.deleteListing(car.id)
+                    Toast.makeText(this, "Listing removed", Toast.LENGTH_SHORT).show()
+                    load()
                 }
-                .setNegativeButton("Cancel", null)
-                .show()
-
+                .setNegativeButton("Cancel", null).show()
             true
         }
     }
 
-    private fun loadAllListings() {
-        carList = db.getAllListings()
-        val adapter = CarAdapter(this, carList)
-        listView.adapter = adapter
+    private fun load() {
+        listView.adapter = CarAdapter(this, db.getAllListings())
     }
 }

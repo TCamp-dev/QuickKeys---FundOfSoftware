@@ -1,111 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#FFFCF2"
-    android:gravity="center_horizontal"
-    android:padding="24dp">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="#F7F3E8">
 
-    <TextView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:text="✅"
-        android:textSize="50sp"
-        android:gravity="center"
-        android:layout_marginTop="40dp"
-        android:layout_marginBottom="16dp"/>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:gravity="center_horizontal"
+        android:padding="32dp" android:paddingTop="64dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Order Confirmed!"
-        android:textSize="28sp"
-        android:textStyle="bold"
-        android:textColor="#1B5E35"
-        android:fontFamily="serif"
-        android:layout_marginBottom="8dp"/>
+        <!-- Success icon -->
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="✅" android:textSize="64sp"
+            android:gravity="center" android:layout_marginBottom="16dp"/>
 
-    <TextView
-        android:id="@+id/txtOrderNumber"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Order #QK-000000"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:textColor="#C8973A"
-        android:layout_marginBottom="32dp"/>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Purchase Complete!" android:textSize="28sp"
+            android:textStyle="bold" android:textColor="#0F3520"
+            android:fontFamily="serif" android:layout_marginBottom="8dp"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@drawable/card_green"
-        android:padding="24dp"
-        android:layout_marginBottom="32dp">
+        <TextView android:id="@+id/txtOrderNumber"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:textSize="15sp" android:textColor="#C8973A"
+            android:textStyle="bold" android:layout_marginBottom="32dp"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="VEHICLE PURCHASED"
-            android:textSize="11sp"
-            android:textStyle="bold"
-            android:textColor="#A8C4A0"
-            android:layout_marginBottom="8dp"/>
+        <!-- Details card -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:background="@drawable/card_listing"
+            android:padding="20dp" android:layout_marginBottom="24dp">
 
-        <TextView
-            android:id="@+id/txtReceiptCarInfo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Car Details"
-            android:textSize="16sp"
-            android:textColor="#F0DFA0"
-            android:layout_marginBottom="20dp"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="VEHICLE" android:textSize="11sp" android:textStyle="bold"
+                android:letterSpacing="0.1" android:textColor="#C8973A"
+                android:layout_marginBottom="8dp"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="PICKUP LOCATION"
-            android:textSize="11sp"
-            android:textStyle="bold"
-            android:textColor="#A8C4A0"
-            android:layout_marginBottom="8dp"/>
+            <TextView android:id="@+id/txtReceiptCarInfo"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:textSize="16sp" android:textStyle="bold"
+                android:textColor="#0F3520" android:fontFamily="serif"
+                android:lineSpacingMultiplier="1.4" android:layout_marginBottom="20dp"/>
 
-        <TextView
-            android:id="@+id/txtPickupLocation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Location"
-            android:textSize="16sp"
-            android:textColor="#FFFCF2"
-            android:layout_marginBottom="20dp"/>
+            <View android:layout_width="match_parent" android:layout_height="1dp"
+                android:background="#E0D4B0" android:layout_marginBottom="20dp"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="SELLER CONTACT"
-            android:textSize="11sp"
-            android:textStyle="bold"
-            android:textColor="#A8C4A0"
-            android:layout_marginBottom="8dp"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="📍  PICKUP LOCATION" android:textSize="11sp"
+                android:textStyle="bold" android:letterSpacing="0.1"
+                android:textColor="#C8973A" android:layout_marginBottom="8dp"/>
 
-        <TextView
-            android:id="@+id/txtContactPhone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Phone Number"
-            android:textSize="16sp"
-            android:textColor="#FFFCF2"/>
+            <TextView android:id="@+id/txtPickupLocation"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:textSize="15sp" android:textColor="#333333"
+                android:layout_marginBottom="20dp"/>
+
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="📞  SELLER CONTACT" android:textSize="11sp"
+                android:textStyle="bold" android:letterSpacing="0.1"
+                android:textColor="#C8973A" android:layout_marginBottom="8dp"/>
+
+            <TextView android:id="@+id/txtContactPhone"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:textSize="15sp" android:textColor="#333333"/>
+
+        </LinearLayout>
+
+        <Button android:id="@+id/btnBackToDashboard"
+            android:layout_width="match_parent" android:layout_height="58dp"
+            android:text="Back to Home" android:textStyle="bold"
+            android:textSize="16sp" android:textColor="#FFFCF2"
+            android:backgroundTint="#1B5E35"/>
+
     </LinearLayout>
-
-    <Button
-        android:id="@+id/btnBackToDashboard"
-        android:layout_width="match_parent"
-        android:layout_height="58dp"
-        android:text="Return to Dashboard"
-        android:textStyle="bold"
-        android:textSize="16sp"
-        android:textColor="#1B5E35"
-        android:backgroundTint="#E8D9A8"/>
-
-</LinearLayout>
+</ScrollView>

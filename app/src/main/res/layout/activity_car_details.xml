@@ -1,94 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#FFFCF2">
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:background="#F7F3E8">
 
-    <!-- Full-width image slider -->
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPagerImages"
-        android:layout_width="match_parent"
-        android:layout_height="260dp"
+        android:layout_width="match_parent" android:layout_height="270dp"
         android:background="#1B5E35"/>
 
-    <!-- Gold underline accent -->
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="4dp"
-        android:background="#C8973A"/>
+    <View android:layout_width="match_parent" android:layout_height="4dp" android:background="#C8973A"/>
 
-    <!-- Details Section -->
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="#FFFCF2">
+    <ScrollView android:layout_width="match_parent" android:layout_height="0dp"
+        android:layout_weight="1" android:background="#F7F3E8">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="24dp">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:padding="24dp">
 
-            <!-- Brand label -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="VEHICLE DETAILS"
-                android:textSize="11sp"
-                android:textStyle="bold"
-                android:letterSpacing="0.12"
-                android:textColor="#C8973A"
-                android:layout_marginBottom="8dp"/>
-
-            <TextView
-                android:id="@+id/txtDetailTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                android:textColor="#0F3520"
-                android:fontFamily="serif"
-                android:lineSpacingMultiplier="1.2"
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="VEHICLE DETAILS" android:textSize="11sp" android:textStyle="bold"
+                android:letterSpacing="0.12" android:textColor="#C8973A"
                 android:layout_marginBottom="10dp"/>
 
-            <TextView
-                android:id="@+id/txtDetailSeller"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:textColor="#7A8A7A"
-                android:layout_marginBottom="32dp"/>
+            <TextView android:id="@+id/txtDetailTitle"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:textSize="23sp" android:textStyle="bold"
+                android:textColor="#0F3520" android:fontFamily="serif"
+                android:lineSpacingMultiplier="1.2" android:layout_marginBottom="10dp"/>
 
-            <!-- Divider -->
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#E8D9A8"
-                android:layout_marginBottom="28dp"/>
+            <TextView android:id="@+id/txtDetailLocation"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:textSize="14sp" android:textColor="#5A7A5A"
+                android:layout_marginBottom="4dp"/>
 
-            <Button
-                android:id="@+id/btnBuyNow"
-                android:layout_width="match_parent"
-                android:layout_height="58dp"
-                android:text="Buy This Car"
-                android:textStyle="bold"
-                android:textSize="16sp"
-                android:textColor="#FFFCF2"
-                android:backgroundTint="#1B5E35"
+            <TextView android:id="@+id/txtDetailPhone"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:textSize="14sp" android:textColor="#5A7A5A"
+                android:layout_marginBottom="10dp"/>
+
+            <TextView android:id="@+id/txtDetailDescription"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:textSize="14sp" android:textColor="#555555"
+                android:lineSpacingMultiplier="1.5" android:layout_marginBottom="24dp"/>
+
+            <View android:layout_width="match_parent" android:layout_height="1dp"
+                android:background="#E0D4B0" android:layout_marginBottom="24dp"/>
+
+            <Button android:id="@+id/btnBuyNow"
+                android:layout_width="match_parent" android:layout_height="58dp"
+                android:text="Buy This Car" android:textStyle="bold"
+                android:textSize="16sp" android:textColor="#FFFCF2"
+                android:backgroundTint="#1B5E35" android:layout_marginBottom="12dp"/>
+
+            <Button android:id="@+id/btnFavorite"
+                android:layout_width="match_parent" android:layout_height="50dp"
+                android:text="♡  Save" android:textSize="14sp"
+                android:textColor="#1B5E35" android:backgroundTint="#E8D9A8"
                 android:layout_marginBottom="12dp"/>
 
-            <Button
-                android:id="@+id/btnBackToList"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:text="← Back to Listings"
-                android:textSize="14sp"
-                android:textColor="#1B5E35"
-                android:backgroundTint="#E8D9A8"/>
+            <Button android:id="@+id/btnBackToList"
+                android:layout_width="match_parent" android:layout_height="48dp"
+                android:text="← Back to Listings" android:textSize="13sp"
+                android:textColor="#888888" android:backgroundTint="#EDE6D0"/>
 
         </LinearLayout>
     </ScrollView>
-
 </LinearLayout>
